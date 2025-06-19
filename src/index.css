@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    /* Colores base */
+    --background: 0 0% 100%; /* Blanco */
+    --foreground: 222.2 84% 4.9%; /* Negro azulado */
+
+    /* Colores primarios - Azul */
+    --primary: 225 46% 22%; /* Azul más brillante similar al de la imagen */
+    --primary-foreground: 0 0% 100%; /* Blanco para texto sobre azul */
+
+    /* Colores secundarios */
+    --secondary: 210 20% 98%; /* Gris muy claro */
+    --secondary-foreground: 220 10% 20%; /* Gris oscuro */
+
+    /* Bordes e inputs */
+    --border: 220 13% 91%; /* Gris claro */
+    --input: 220 13% 91%; /* Gris claro */
+
+    /* Colores para el sidebar - ajustados para coincidir con la imagen */
+    --sidebar-background: 0 0% 98%; /* Gris muy claro */
+    --sidebar-foreground: 220 10% 20%; /* Gris oscuro */
+    --sidebar-primary:213 100% 44.7%; /* Azul brillante */
+    --sidebar-primary-foreground: 0 0% 100%; /* Blanco */
+    --sidebar-accent: 210 20% 96%; /* Gris muy claro para hover */
+    --sidebar-accent-foreground: 220 10% 20%; /* Gris oscuro */
+    --sidebar-border: 220 13% 91%; /* Gris claro */
+    
+    /* Otros colores */
+    --destructive: 0 84.2% 60.2%; /* Rojo para errores */
+    --destructive-foreground: 210 40% 98%; /* Blanco */
+    
+    --radius: 0.5rem; /* Radio de bordes */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
