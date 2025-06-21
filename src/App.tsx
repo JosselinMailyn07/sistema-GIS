@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/login";
 import { AdminLayout } from "./components/layout/AdminLayout";
 import { AdminReports } from "./components/admin/ventas/reports/AdminReports";
 import { Factura } from "./components/admin/ventas/factura/factura";
@@ -22,6 +23,11 @@ const App = () => (
           {/* Redirect root to admin dashboard */}
           <Route path="/" element={<Navigate to="/admin/reports" replace />} />
           
+
+          {/* Login Route */}
+          <Route path="/login" element={<Login />} />
+
+
           {/* Admin Routes */}
           <Route path="/admin/*" element={<AdminLayout />}>
             {/* Rutas de Ventas */}
