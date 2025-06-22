@@ -16,7 +16,8 @@ import {
   MessageSquare,
   Download,
   DollarSign,
-  InboxIcon
+  InboxIcon,
+  PencilIcon
 } from 'lucide-react';
 import {
   Select,
@@ -242,6 +243,26 @@ const adminMenuItems: MenuItem[] = [
 
 
 ]
+// para editar 
+  },{
+    id: 'Configuracion',
+    title: 'Configuración',
+    icon: Settings,
+    children: [
+      {
+        id: 'Archivo',
+        title: 'Archivo',
+        icon: FileText,
+        path: '/admin/archivo'
+      },
+      {
+        id: 'Editar',
+        title: 'Editar',
+        icon: PencilIcon,
+        path: '/admin/editar '
+      }   
+    ]
+  
 
 
 // Agregar modulo Tesoreria
