@@ -14,7 +14,9 @@ import {
   User,
   ClipboardList,
   MessageSquare,
-  Download
+  Download,
+  DollarSign,
+  InboxIcon
 } from 'lucide-react';
 import {
   Select,
@@ -61,28 +63,66 @@ const adminMenuItems: MenuItem[] = [
         icon: Settings,
         path: '/admin/nota-entrega'
       },
-      // Agregar modulos faltantes de ventas 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      {
+        id: 'pedidos',
+        title: 'Pedidos',
+        icon: InboxIcon,
+        path: '/admin/pedidos'
+      },
+      {
+        id: 'cotizaciones',
+        title: 'Cotizaciones',
+        icon: Settings,
+        path: '/admin/cotizaciones'
+      },
+      {
+        id: 'clientes',
+        title: 'Clientes',
+        icon: Users,
+        path: '/admin/clientes'
+      },
+      {
+        id: 'cobranzas',
+        title: 'Cobranzas',
+        icon: DollarSign,
+        path: '/admin/cobranzas'
+      },
+      {
+        id: 'movimientos-clientes',
+        title: 'Movimientos de Clientes',
+        icon: Settings,
+        path: '/admin/movimientos-clientes'
+      },
+      {
+        id: 'rutas-visitas',
+        title: 'Rutas Visitas',
+        icon: Settings,
+        path: '/admin/rutas-visitas'
+      },
+      {
+        id: 'mantenimiento-rutas',
+        title: 'Mantenimiento de Rutas',
+        icon: Settings,
+        path: '/admin/mantenimiento-rutas'
+      },
+      {
+        id: 'estimado-ventas',
+        title: 'Estimado de Ventas',
+        icon: Settings,
+        path: '/admin/estimado-ventas'
+      },
+      {
+        id: 'causa-no-ventas',
+        title: 'Causa de No Ventas',
+        icon: Settings,
+        path: '/admin/causa-no-ventas'
+      },
+      {
+        id: 'grupos-clientes',
+        title: 'Grupos de Clientes',
+        icon: Settings,
+        path: '/admin/grupos-clientes'
+      }
     ]
   },
   {
@@ -101,7 +141,55 @@ const adminMenuItems: MenuItem[] = [
         title: 'Recepciones',
         icon: Calendar,
         path: '/admin/recepciones'
-      }
+      },
+      {
+        id: 'ordenes-compra',
+        title: 'Órdenes de Compra',
+        icon: UserCheck,
+        path: '/admin/ordenes-compra'
+      },
+      {
+        id: 'requisiciones',
+        title: 'Requisiciones',
+        icon: UserCheck,
+        path: '/admin/requisiciones'
+      },
+      {
+        id: 'registro-productos',
+        title: 'Registro de Productos',
+        icon: UserCheck,
+        path: '/admin/registro-productos'
+      },
+      {
+        id: 'ajustes-precios',
+        title: 'Ajustes de Precios',
+        icon: UserCheck,
+        path: '/admin/ajustes-precios'
+      },
+      {
+        id: 'proveedores',
+        title: 'Proveedores',
+        icon: UserCheck,
+        path: '/admin/proveedores'
+      },
+      {
+        id: 'pagos',
+        title: 'Pagos',
+        icon: UserCheck,
+        path: '/admin/pagos'
+      },
+      {
+        id: 'movimientos-proveedores',
+        title: 'Movimientos de Proveedores',
+        icon: UserCheck,
+        path: '/admin/movimientos-proveedores'
+      },
+      {
+        id: 'grupos-proveedores',
+        title: 'Grupos de Proveedores',
+        icon: UserCheck,
+        path: '/admin/grupos-proveedores'
+      },
 // Agregar modulos faltantes de compras
 
 
