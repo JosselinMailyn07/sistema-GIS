@@ -1,7 +1,7 @@
 import { ConfiguracionSubHeader } from '../ConfiguracionSubheader'
 
 // Archivo.tsx
-// Este componente representa la sección de configuración del archivo en el módulo de administración.
+// Este componente representa la seccióon de configuración del archivo en el módulo de administración.
 
 export const Archivo= () => {
   return (

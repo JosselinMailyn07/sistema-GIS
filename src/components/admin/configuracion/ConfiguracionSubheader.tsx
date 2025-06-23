@@ -63,7 +63,7 @@ export const ConfiguracionSubHeader = () => {
       {showEditarSubMenu && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
           <SubMenuButton icon={FcBusiness} label="Empresas | Inicio" onClick={() => {}} />
-          <SubMenuButton icon={FcSupport} label="Parámetros | Documentos" onClick={() => {}} />
+          <SubMenuButton icon={FcDocument} label="Parámetros | Documentos" onClick={() => {}} />
           <SubMenuButton icon={FcCalendar} label="Unidades | Medida" onClick={() => {}} />
           <SubMenuButton icon={FcBusinessman} label="Comisiones | Productos" onClick={() => {}} />
           <SubMenuButton icon={FcSurvey} label="Tipos de Crédito" onClick={() => {}} />
