@@ -64,6 +64,7 @@ const ColoredLine = ({ color }) => (
 
 // Configuración de menús para cada rol
 const adminMenuItems: MenuItem[] = [
+  // Ventas
   {
     id: 'ventas',
     title: 'Ventas',
@@ -149,6 +150,7 @@ const adminMenuItems: MenuItem[] = [
       }
     ]
   },
+  // Compras
   {
     id: 'compras',
     title: 'Compras',
@@ -234,8 +236,10 @@ const adminMenuItems: MenuItem[] = [
 
 
     ]
+    // Inventario
   },
-  {
+
+ {
     id: 'inventario',
     title: 'Inventarios',
     icon: FileText,
@@ -246,7 +250,7 @@ const adminMenuItems: MenuItem[] = [
         icon: UserCheck,
         path: '/admin/recepciones-bodegas'
       },
-<<<<<<< HEAD
+
       {
         id: 'movimientos-productos',
         title: 'Movimientos de productos',
@@ -287,14 +291,15 @@ const adminMenuItems: MenuItem[] = [
         id: 'bodega',
         title: 'Bodega',
         icon: UserCheck,
-        path: '/admin/bodaga'
-      },
-      
-
-      
-=======
+        path: '/admin/bodega'
+      }
     ]
   },
+
+
+
+
+  // Tesoreria
   {
     id: 'Tesoreria',
     title: 'Tesorería',
@@ -376,46 +381,12 @@ const adminMenuItems: MenuItem[] = [
         title: 'Cierre de Cajas',
         icon: Package,
         path: '/admin/cierre-caja'
-      },
-
-
+      }
     ]
   }
-
-
->>>>>>> d615dad1b06188087972574093dbd37a8fdcce4d
-// Agregar modulos faltantes de clientes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Agregar modulo Tesoreria
-
-
-
-
-
-
-
-
-
-
-// Mas opciones PRUEBA
 ];
+
+// Student menu items declaration moved outside of adminMenuItems array
 const studentMenuItems: MenuItem[] = [
   {
     id: 'PRUEBA',
@@ -454,13 +425,10 @@ export const AdminSidebar = ({ isOpen }: AdminSidebarProps) => {
 
   // Determinar la sección activa basada en la ruta
   const activeSection = location.pathname.startsWith('/admin/ventas') ? 'ventas' :
-<<<<<<< HEAD
+
                        location.pathname.startsWith('/admin/gastos') ? 'gastos' :
                        location.pathname.startsWith('/admin/clientes') ? 'clientes'  : null;
-=======
-    location.pathname.startsWith('/admin/gastos') ? 'gastos' :
-      location.pathname.startsWith('/admin/clientes') ? 'clientes' : null;
->>>>>>> d615dad1b06188087972574093dbd37a8fdcce4d
+
   /**
    * Función para expandir/contraer elementos del menú
    * @param itemId - ID del elemento a expandir/contraer
