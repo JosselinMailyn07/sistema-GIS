@@ -67,6 +67,15 @@ const App = () => (
             
             {/* Rutas de Configuración */}
             
+
+
+
+
+
+
+
+
+
             {/* Rutas de Compras/Gastos */}
             <Route path="compras" element={<Compras/>} />
             <Route path="recepciones" element={<Recepciones/>} />
@@ -87,9 +96,23 @@ const App = () => (
             <Route path="recepciones-bodegas" element={<RecepcionesBodegas/>} />
 
             
+
+
+
+
+
+            
             
             {/* Ruta por defecto para /admin */}
             <Route index element={<Navigate to="reports" replace />} />
+
+
+
+
+
+
+
+
           </Route>
 
           {/* 404 Not Found */}
