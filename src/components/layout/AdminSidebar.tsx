@@ -64,6 +64,7 @@ const ColoredLine = ({ color }) => (
 
 // Configuración de menús para cada rol
 const adminMenuItems: MenuItem[] = [
+  // Ventas
   {
     id: 'ventas',
     title: 'Ventas',
@@ -149,6 +150,7 @@ const adminMenuItems: MenuItem[] = [
       }
     ]
   },
+  // Compras
   {
     id: 'compras',
     title: 'Compras',
@@ -234,21 +236,70 @@ const adminMenuItems: MenuItem[] = [
 
 
     ]
+    // Inventario
   },
-  {
-    id: 'Inventario',
+
+ {
+    id: 'inventario',
     title: 'Inventarios',
-    icon: Users,
-    path: '/admin/clientes',
-    children: [
+    icon: FileText,
+    children:  [
       {
         id: 'recepciones-bodega',
         title: 'Recepciones de Bodega',
         icon: UserCheck,
-        path: '/admin/recepciones-bodega'
+        path: '/admin/recepciones-bodegas'
       },
+
+      {
+        id: 'movimientos-productos',
+        title: 'Movimientos de productos',
+        icon: UserCheck,
+        path: '/admin/movimientos-productos'
+      },
+      {
+        id: 'transferencias-bodegas',
+        title: 'Transferencias de Bodegas',
+        icon: UserCheck,
+        path: '/admin/transferencias-bodegas'
+      },
+      {
+        id: 'guias-remision',
+        title: 'Guias de Remision',
+        icon: UserCheck,
+        path: '/admin/guias-remision'
+      },
+      {
+        id: 'revoluciones-lotes',
+        title: 'Revoluciones por Lotes',
+        icon: UserCheck,
+        path: '/admin/revoluciones-lotes'
+      },
+      {
+        id: 'inventario-inicial-fisico',
+        title: 'Inventario Inicial | Fisico',
+        icon: UserCheck,
+        path: '/admin/inventario-inicial-fisico'
+      },
+      {
+        id: 'grupo-productos',
+        title: 'Grupos de Productos',
+        icon: UserCheck,
+        path: '/admin/grupo-productos'
+      },
+      {
+        id: 'bodega',
+        title: 'Bodega',
+        icon: UserCheck,
+        path: '/admin/bodega'
+      }
     ]
   },
+
+
+
+
+  // Tesoreria
   {
     id: 'Tesoreria',
     title: 'Tesorería',
@@ -330,45 +381,12 @@ const adminMenuItems: MenuItem[] = [
         title: 'Cierre de Cajas',
         icon: Package,
         path: '/admin/cierre-caja'
-      },
-
-
+      }
     ]
   }
-
-
-// Agregar modulos faltantes de clientes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Agregar modulo Tesoreria
-
-
-
-
-
-
-
-
-
-
-// Mas opciones PRUEBA
 ];
+
+// Student menu items declaration moved outside of adminMenuItems array
 const studentMenuItems: MenuItem[] = [
   {
     id: 'PRUEBA',
@@ -407,8 +425,10 @@ export const AdminSidebar = ({ isOpen }: AdminSidebarProps) => {
 
   // Determinar la sección activa basada en la ruta
   const activeSection = location.pathname.startsWith('/admin/ventas') ? 'ventas' :
-    location.pathname.startsWith('/admin/gastos') ? 'gastos' :
-      location.pathname.startsWith('/admin/clientes') ? 'clientes' : null;
+
+                       location.pathname.startsWith('/admin/gastos') ? 'gastos' :
+                       location.pathname.startsWith('/admin/clientes') ? 'clientes'  : null;
+
   /**
    * Función para expandir/contraer elementos del menú
    * @param itemId - ID del elemento a expandir/contraer
