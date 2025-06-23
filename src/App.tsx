@@ -30,6 +30,7 @@ import { Proveedores } from "./components/admin/compras/proveedores/proveedores"
 import { Pagos } from "./components/admin/compras/pagos/pagos";
 import { MovimientosProveedores } from "./components/admin/compras/movimientos-proveedores/movimientos-proveedores";
 import { GruposProveedores } from "./components/admin/compras/grupos-proveedores/grupos-proveedores";
+import { RecepcionesBodegas } from "./components/admin/inventario/recepciones-bodegas/recepciones-bodega";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -66,6 +67,15 @@ const App = () => (
             
             {/* Rutas de Configuración */}
             
+
+
+
+
+
+
+
+
+
             {/* Rutas de Compras/Gastos */}
             <Route path="compras" element={<Compras/>} />
             <Route path="recepciones" element={<Recepciones/>} />
@@ -79,9 +89,30 @@ const App = () => (
             <Route path="grupos-proveedores" element={<GruposProveedores/>} />
             
             {/* Rutas de Clientes */}
+
+
+
+            {/* Rutas de inventario */}
+            <Route path="recepciones-bodegas" element={<RecepcionesBodegas/>} />
+
+            
+
+
+
+
+
+            
             
             {/* Ruta por defecto para /admin */}
             <Route index element={<Navigate to="reports" replace />} />
+
+
+
+
+
+
+
+
           </Route>
 
           {/* 404 Not Found */}

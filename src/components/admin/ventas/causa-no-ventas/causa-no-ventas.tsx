@@ -6,7 +6,7 @@ export const CausaNoVentas= () => {
       <VentasSubHeader />
       
       {/* Resto del contenido del módulo de facturas */}
-      <div className="p-6 bg-white rounded-lg shadow">
+      <div className="p-6 bg-black rounded-lg shadow">
         {/* ... */}
       </div>
     </div>
