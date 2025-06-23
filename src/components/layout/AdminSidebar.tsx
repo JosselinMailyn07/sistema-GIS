@@ -1,12 +1,13 @@
+
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { 
-  Users, 
-  GraduationCap, 
-  Settings, 
-  FileText, 
-  BarChart3, 
-  ChevronDown, 
+import {
+  Users,
+  GraduationCap,
+  Settings,
+  FileText,
+  BarChart3,
+  ChevronDown,
   ChevronRight,
   UserCheck,
   BookOpen,
@@ -16,7 +17,21 @@ import {
   MessageSquare,
   Download,
   DollarSign,
-  InboxIcon
+  InboxIcon,
+  Banknote,
+  Check,
+  ReceiptText,
+  Landmark,
+  ArrowLeftRight,
+  Handshake,
+  Divide,
+  PackageOpen,
+  Package,
+  HandCoins,
+  FilePenLine,
+  ArchiveRestore,
+  ListChecks,
+  Box
 } from 'lucide-react';
 import {
   Select,
@@ -37,6 +52,15 @@ interface MenuItem {
   path?: string;
   children?: MenuItem[];
 }
+const ColoredLine = ({ color }) => (
+  <hr
+      style={{
+          color: color,
+          backgroundColor: color,
+          height: 5
+      }}
+  />
+);
 
 // Configuración de menús para cada rol
 const adminMenuItems: MenuItem[] = [
@@ -190,7 +214,7 @@ const adminMenuItems: MenuItem[] = [
         icon: UserCheck,
         path: '/admin/grupos-proveedores'
       },
-// Agregar modulos faltantes de compras
+      // Agregar modulos faltantes de compras
 
 
 
@@ -222,6 +246,7 @@ const adminMenuItems: MenuItem[] = [
         icon: UserCheck,
         path: '/admin/recepciones-bodegas'
       },
+<<<<<<< HEAD
       {
         id: 'movimientos-productos',
         title: 'Movimientos de productos',
@@ -267,6 +292,98 @@ const adminMenuItems: MenuItem[] = [
       
 
       
+=======
+    ]
+  },
+  {
+    id: 'Tesoreria',
+    title: 'Tesorería',
+    icon: DollarSign,
+    path: '/admin/tesoreria',
+    children: [
+      {
+        id: 'bancos',
+        title: 'Bancos',
+        icon: Landmark,
+        path: '/admin/bancos'
+      },
+      {
+        id: 'chequeras',
+        title: 'Chequeras',
+        icon: Banknote,
+        path: '/admin/chequeras'
+      },
+      {
+        id: 'movimientos-bancarios',
+        title: 'Movimientos Bancarios',
+        icon: ArrowLeftRight,
+        path: '/admin/movimientos-bancarios'
+      },
+      {
+        id: 'conciliaciones-bancarias',
+        title: 'Conciliaciones Bancarias',
+        icon: Handshake,
+        path: '/admin/conciliaciones-bancarias'
+      },
+      {
+        id: 'movimientos-caja-principal',
+        title: 'Movimientos de Caja Principal',
+        icon: HandCoins,
+        path: '/admin/movimientos-caja-principal'
+      },
+      {
+        id: 'depositos',
+        title: 'Depósitos',
+        icon: ArchiveRestore,
+        path: '/admin/depositos'
+      },
+
+      {
+        id: 'ediciones-cajas',
+        title: 'Ediciones de Cajas',
+        icon: FilePenLine,
+        path: '/admin/ediciones-cajas',
+        children: [
+          {
+            id: 'cajas',
+            title: 'Cajas',
+            icon: Box,
+            path: '/admin/ediciones-cajas/cajas'
+          },
+          {
+            id: 'cajeros',
+            title: 'Cajeros',
+            icon: User,
+            path: '/admin/ediciones-cajas/cajeros'
+          },
+          {
+            id: 'turnos',
+            title: 'Turnos',
+            icon: ListChecks,
+            path: '/admin/ediciones-cajas/turnos'
+          },
+        ]
+      },
+
+      {
+        id: 'apertura-caja',
+        title: 'Apertura de Cajas',
+        icon: PackageOpen,
+        path: '/admin/apertura-caja'
+      },
+      {
+        id: 'cierre-caja',
+        title: 'Cierre de Cajas',
+        icon: Package,
+        path: '/admin/cierre-caja'
+      },
+
+
+    ]
+  }
+
+
+>>>>>>> d615dad1b06188087972574093dbd37a8fdcce4d
 // Agregar modulos faltantes de clientes
 
 
@@ -285,11 +402,8 @@ const adminMenuItems: MenuItem[] = [
 
 
 
-]
-
 
 // Agregar modulo Tesoreria
-}
 
 
 
@@ -298,10 +412,10 @@ const adminMenuItems: MenuItem[] = [
 
 
 
-];
+
 
 // Mas opciones PRUEBA
-
+];
 const studentMenuItems: MenuItem[] = [
   {
     id: 'PRUEBA',
@@ -314,7 +428,7 @@ const studentMenuItems: MenuItem[] = [
         icon: ClipboardList,
         path: '/edit/prueba-02'
       },
-    
+
     ]
   },
   {
@@ -328,7 +442,7 @@ const studentMenuItems: MenuItem[] = [
         icon: MessageSquare,
         path: '/edit/prueba003'
       },
-   
+
     ]
   },
 ];
@@ -340,15 +454,20 @@ export const AdminSidebar = ({ isOpen }: AdminSidebarProps) => {
 
   // Determinar la sección activa basada en la ruta
   const activeSection = location.pathname.startsWith('/admin/ventas') ? 'ventas' :
+<<<<<<< HEAD
                        location.pathname.startsWith('/admin/gastos') ? 'gastos' :
                        location.pathname.startsWith('/admin/clientes') ? 'clientes'  : null;
+=======
+    location.pathname.startsWith('/admin/gastos') ? 'gastos' :
+      location.pathname.startsWith('/admin/clientes') ? 'clientes' : null;
+>>>>>>> d615dad1b06188087972574093dbd37a8fdcce4d
   /**
    * Función para expandir/contraer elementos del menú
    * @param itemId - ID del elemento a expandir/contraer
    */
   const toggleExpanded = (itemId: string) => {
-    setExpandedItems(prev => 
-      prev.includes(itemId) 
+    setExpandedItems(prev =>
+      prev.includes(itemId)
         ? prev.filter(id => id !== itemId)
         : [...prev, itemId]
     );
@@ -410,7 +529,7 @@ export const AdminSidebar = ({ isOpen }: AdminSidebarProps) => {
             </span>
           </Link>
         )}
-        
+
         {hasChildren && isExpanded && (
           <div className="ml-4">
             {item.children?.map(child => renderMenuItem(child, level + 1))}
@@ -435,7 +554,7 @@ export const AdminSidebar = ({ isOpen }: AdminSidebarProps) => {
             <p className="text-xs text-gray-600">Portoviejo</p>
           </div>
         </div>
-        
+
         {/* Selector de rol con dropdown */}
         <div className="space-y-2">
           <label className="text-xs font-medium text-gray-600">Seleccionar:</label>
@@ -444,8 +563,8 @@ export const AdminSidebar = ({ isOpen }: AdminSidebarProps) => {
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="bg-white border-utm-border shadow-lg z-50">
-              <SelectItem 
-                value="admin" 
+              <SelectItem
+                value="admin"
                 className="hover:bg-sidebar-accent focus:bg-sidebar-primary cursor-pointer"
               >
                 <div className="flex items-center gap-2">
@@ -453,8 +572,8 @@ export const AdminSidebar = ({ isOpen }: AdminSidebarProps) => {
                   <span className="font-medium">Administración</span>
                 </div>
               </SelectItem>
-              <SelectItem 
-                value="student" 
+              <SelectItem
+                value="student"
                 className="hover:bg-sidebar-primary focus:bg-sidebar-accent cursor-pointer"
               >
                 <div className="flex items-center gap-2">
@@ -466,7 +585,7 @@ export const AdminSidebar = ({ isOpen }: AdminSidebarProps) => {
           </Select>
         </div>
       </div>
-      
+
       {/* Navegación principal */}
       <nav className="py-2">
         <p className="hover:bg-sidebar-primary px-4 py-2 text-xs font-semibold text-utm-secondary uppercase tracking-wide">
