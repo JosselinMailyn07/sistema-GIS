@@ -30,8 +30,6 @@ import { Proveedores } from "./components/admin/compras/proveedores/proveedores"
 import { Pagos } from "./components/admin/compras/pagos/pagos";
 import { MovimientosProveedores } from "./components/admin/compras/movimientos-proveedores/movimientos-proveedores";
 import { GruposProveedores } from "./components/admin/compras/grupos-proveedores/grupos-proveedores";
-import { Archivo } from "./components/admin/configuracion/archivo/archivo";
-import { Editar } from "./components/admin/configuracion/editar/editar";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -67,9 +65,6 @@ const App = () => (
             <Route path="grupos-clientes" element={<GruposClientes />} />
             
             {/* Rutas de Configuración */}
-            <Route path="archivo" element={<Archivo/>} />
-            <Route path="editar" element={<Editar/>} />
-           
             
             {/* Rutas de Compras/Gastos */}
             <Route path="compras" element={<Compras/>} />
