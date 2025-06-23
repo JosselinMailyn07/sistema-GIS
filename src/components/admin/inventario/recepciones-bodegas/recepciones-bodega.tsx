@@ -13,7 +13,7 @@ export const RecepcionesBodegas= () => {
           <Button className="h-8 px-4 bg-success hover:bg-success/90">Ordenes de compra</Button>
           <Button className="h-8 px-4 bg-success hover:bg-success/90">Productos</Button>
           <Button className="h-8 px-4 bg-success hover:bg-success/90">Servicios</Button>
-          <Button className="h-8 px-4 bg-success hover:bg-success/90">Descuentos</Button>
+          <Button className="h-8 px-4 bg-success hover:bg-success/90">Descuento</Button>
         </div>
 
         {/* Bloque derecho */}
