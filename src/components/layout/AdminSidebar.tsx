@@ -150,6 +150,17 @@ const adminMenuItems: MenuItem[] = [
       }
     ]
   },
+
+
+
+
+
+
+
+
+
+
+  
   // Compras
   {
     id: 'compras',
@@ -236,9 +247,13 @@ const adminMenuItems: MenuItem[] = [
 
 
     ]
-    // Inventario
+    
   },
 
+
+
+
+  // Inventario
  {
     id: 'inventario',
     title: 'Inventarios',
@@ -295,6 +310,12 @@ const adminMenuItems: MenuItem[] = [
       }
     ]
   },
+
+
+
+
+
+
 
 
 
@@ -384,6 +405,61 @@ const adminMenuItems: MenuItem[] = [
       }
     ]
   }
+
+
+
+
+
+
+
+
+// RUTAS HANSEL CONFIGURACION DE MENUS PARA ADMINISTRADOR
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ];
 
 // Student menu items declaration moved outside of adminMenuItems array
