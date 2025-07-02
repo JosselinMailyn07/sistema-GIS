@@ -52,15 +52,7 @@ interface MenuItem {
   path?: string;
   children?: MenuItem[];
 }
-const ColoredLine = ({ color }) => (
-  <hr
-      style={{
-          color: color,
-          backgroundColor: color,
-          height: 5
-      }}
-  />
-);
+
 
 // Configuración de menús para cada rol
 const adminMenuItems: MenuItem[] = [
@@ -325,7 +317,6 @@ const adminMenuItems: MenuItem[] = [
     id: 'Tesoreria',
     title: 'Tesorería',
     icon: DollarSign,
-    path: '/admin/tesoreria',
     children: [
       {
         id: 'bancos',
