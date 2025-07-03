@@ -239,13 +239,13 @@ const adminMenuItems: MenuItem[] = [
 
 
     ]
-    // Inventario
+    
   },
 
 
 
 
-
+  // Inventario
  {
     id: 'inventario',
     title: 'Inventarios',

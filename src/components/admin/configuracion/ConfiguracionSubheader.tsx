@@ -13,7 +13,7 @@ const SubMenuButton = ({ icon: Icon, label, onClick }) => (
     onClick={onClick}
   >
     <div className="flex flex-col items-center justify-center gap-1">
-      <Icon size={16} />
+      <Icon size={22} />
       <span className="text-xs whitespace-nowrap">{label}</span>
     </div>
   </Button>
@@ -35,18 +35,19 @@ export const ConfiguracionSubHeader = () => {
 
   return (
     <div className="bg-white border-b border-gray-200 p-4 mb-6">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold text-gray-800">Configuración</h2>
+      <div className="flex items-center justify-between mb-5">
+        <h2 className="text-xl font-bold text-gray-800 ">Configuración</h2>
       </div>
-
+    <br />
       <div className="flex flex-wrap items-center gap-2">
         <SubMenuButton icon={FcSurvey} label="Archivo" onClick={toggleArchivoSubMenu} />
         <SubMenuButton icon={FcEditImage} label="Editar" onClick={toggleEditarSubMenu} />
       </div>
       <br />
-
+ 
       {showArchivoSubMenu && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+      <div className='bg-gray-50 p-4 rounded-lg shadow-md mt-4'> Archivo
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 pt-2 text-xl">
           <SubMenuButton icon={FcDepartment} label="Provincias" onClick={() => {}} />
           <SubMenuButton icon={FcDepartment} label="Cantones" onClick={() => {}} />
           <SubMenuButton icon={FcDepartment} label="Ciudades" onClick={() => {}} />
@@ -58,10 +59,12 @@ export const ConfiguracionSubHeader = () => {
           <SubMenuButton icon={FcDocument} label="Auditoría | Control" onClick={() => {}} />
           <SubMenuButton icon={FcBusinessman} label="Mantenimiento BBDD" onClick={() => {}} />
         </div>
+      </div>
       )}
 
       {showEditarSubMenu && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+      <div className='bg-gray-50 p-4 rounded-lg shadow-md mt-4'> Editar
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 pt-2 text-xs">
           <SubMenuButton icon={FcBusiness} label="Empresas | Inicio" onClick={() => {}} />
           <SubMenuButton icon={FcDocument} label="Parámetros | Documentos" onClick={() => {}} />
           <SubMenuButton icon={FcCalendar} label="Unidades | Medida" onClick={() => {}} />
@@ -73,6 +76,7 @@ export const ConfiguracionSubHeader = () => {
           <SubMenuButton icon={FcSalesPerformance} label="Conceptos Generales" onClick={() => {}} />
           <SubMenuButton icon={FcSalesPerformance} label="Seguridad | Perfiles Usuario" onClick={() => {}} />
         </div>
+      </div>
       )}
     </div>
   );

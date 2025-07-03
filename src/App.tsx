@@ -32,6 +32,7 @@ import { MovimientosProveedores } from "./components/admin/compras/movimientos-p
 import { GruposProveedores } from "./components/admin/compras/grupos-proveedores/grupos-proveedores";
 import { RecepcionesBodegas } from "./components/admin/inventario/recepciones-bodegas/recepciones-bodega";
 import { Bancos } from "./components/admin/tesoreria/bancos/layout";
+import { ConfiguracionSubHeader } from "./components/admin/configuracion/ConfiguracionSubheader";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -67,8 +68,10 @@ const App = () => (
             <Route path="grupos-clientes" element={<GruposClientes />} />
             <Route path="bancos" element={<Bancos />} />
             
-            {/* Rutas de Configuración */}
-            
+    
+            {/* Rutas de Configuración  */}
+            {/* Solo esta, ya que contendrán todas las opciones en el subheader */}
+            <Route path="configuracion" element={<ConfiguracionSubHeader />} /> 
 
 
 
