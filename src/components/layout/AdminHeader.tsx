@@ -1,6 +1,7 @@
 // components/layout/AdminHeader.tsx
 import { Menu, User, Bell, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 interface AdminHeaderProps {
   onToggleSidebar: () => void;
@@ -21,15 +22,18 @@ export const AdminHeader = ({ onToggleSidebar, sidebarOpen }: AdminHeaderProps) 
         </Button>
         <h1 className="text-xl font-semibold">Sistema de Administración</h1>
       </div>
-      
+
       <div className="flex items-center gap-3">
         <span className="text-sm font-medium">ADMINISTRACIÓN GAETANA-GIS</span>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10 p-2">
             <Bell size={18} />
           </Button>
-          <Button variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10 p-2">
-            <Settings size={18} />
+          
+          <Button asChild variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10 p-2">
+            <Link to="/admin/configuracion">
+              <Settings size={18} />
+            </Link>
           </Button>
           <Button variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10 p-2">
             <User size={18} />
