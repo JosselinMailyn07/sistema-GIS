@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 interface Campo {
   key: string;
   label: string;
@@ -10,9 +12,13 @@ interface Fila {
 interface TableTemplateTestProps {
   campos: Campo[];
   datos: Fila[];
+
 }
 
-export const Tablas = ({ campos, datos }: TableTemplateTestProps) => {
+export const Tablas = ({ campos, datos}: TableTemplateTestProps) => {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+
   return (
     <table className="min-w-full table-auto border border-gray-300">
       <thead className="bg-gray-100">
@@ -26,10 +32,14 @@ export const Tablas = ({ campos, datos }: TableTemplateTestProps) => {
       </thead>
       <tbody>
         {datos.map((fila, index) => (
-          <tr key={index} className="hover:bg-gray-50">
+          <tr key={index} className="">
             {campos.map((columna) => (
               <td key={columna.key} className="px-4 py-2 border">
-                {fila[columna.key]}
+                {columna.key === "radio" ? (
+                  <input type="radio" name="selectfila" value={fila[columna.key]} />
+                ) : (
+                  fila[columna.key]
+                )}
               </td>
             ))}
           </tr>

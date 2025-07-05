@@ -31,8 +31,8 @@ import { Pagos } from "./components/admin/compras/pagos/pagos";
 import { MovimientosProveedores } from "./components/admin/compras/movimientos-proveedores/movimientos-proveedores";
 import { GruposProveedores } from "./components/admin/compras/grupos-proveedores/grupos-proveedores";
 import { RecepcionesBodegas } from "./components/admin/inventario/recepciones-bodegas/recepciones-bodega";
-import { Bancos } from "./components/admin/tesoreria/bancos/layout";
-import { Chequeras } from "./components/admin/tesoreria/chequeras/chequerastest";
+
+import { Tesoreria } from "./components/admin/tesoreria/tesoreriaTabs";
 import { ConfiguracionSubHeader } from "./components/admin/configuracion/ConfiguracionSubheader";
 const queryClient = new QueryClient();
 
@@ -115,8 +115,8 @@ const App = () => (
 
 
           {/* Rutas de tesorería */}
-            <Route path="bancos" element={<Bancos />} />
-            <Route path="chequeras" element={<Chequeras />} />
+
+            <Route path="tesoreria" element={<Tesoreria />} />
 
 
 
