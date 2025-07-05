@@ -1,83 +1,114 @@
+// components/admin/configuracion/ConfiguracionSubHeader.tsx
 import React, { useState } from 'react';
-import {
-  FcAddDatabase, FcPackage, FcServices, FcEditImage,
-  FcDocument, FcMoneyTransfer, FcBusinessman, FcSurvey,
-  FcSalesPerformance, FcCalendar, FcSettings, FcInfo, FcDepartment, FcBusiness, FcGlobe, FcLike, FcSupport
-} from 'react-icons/fc';
-import { Button } from '@/components/ui/button';
+import * as Tabs from '@radix-ui/react-tabs';
+import { ProvinciasForm } from './archivo/provincias/provincias';
 
-const SubMenuButton = ({ icon: Icon, label, onClick }) => (
-  <Button
-    variant="ghost"
-    className="flex-1 min-w-[120px] px-2 py-1 h-auto hover:bg-blue-50"
-    onClick={onClick}
-  >
-    <div className="flex flex-col items-center justify-center gap-1">
-      <Icon size={22} />
-      <span className="text-xs whitespace-nowrap">{label}</span>
-    </div>
-  </Button>
-);
 
+// Define los contenidos de las pestañas
+// Cada contenido es un componente diferente que contiene formularios o información específica
+const ProvinciasContent = () => <div> <ProvinciasForm /></div>;
+const CantonesContent = () => <div> formulario de cantones</div>;
+const CiudadesContent = () => <div>formulario de</div>;
+const FacturaContent = () => <div></div>;
+const CalendarioContent = () => <div></div>;
+const OperacionesBBDDContent = () => <div></div>;
+const ComprobantesFiscalesContent = () => <div></div>;
+const EstacionesPosPVContent = () => <div></div>;
+const AuditoriaControlContent = () => <div></div>;
+const MantenimientoBBDDContent = () => <div></div>;
+
+// Define el tipo de las pestañas
+// Cada pestaña tiene una etiqueta y un contenido asociado
+type TabItem = { label: string; content: React.ReactNode };
+
+const RadixTabs: React.FC<{ tabs: TabItem[] }> = ({ tabs }) => {
+  const [value, setValue] = useState(tabs[0]?.label || '');
+  return (
+    <Tabs.Root value={value} onValueChange={setValue}>
+      <Tabs.List className="flex border-b mb-2">
+        {tabs.map(tab => (
+          <Tabs.Trigger
+            key={tab.label}
+            value={tab.label}
+            className={`px-4 py-2 text-sm font-medium ${
+              value === tab.label
+                ? 'text-blue-600 border-b-2 border-blue-600'
+                : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            {tab.label}
+          </Tabs.Trigger>
+        ))}
+      </Tabs.List>
+      {tabs.map(tab => (
+        <Tabs.Content key={tab.label} value={tab.label} className="p-2">
+          {tab.content}
+        </Tabs.Content>
+      ))}
+    </Tabs.Root>
+  );
+};
+
+// Componente principal que contiene los botones de navegación y las pestañas
+// Permite alternar entre las pestañas de "Archivo" y "Editar"
 export const ConfiguracionSubHeader = () => {
-  const [showArchivoSubMenu, setShowArchivoSubMenu] = useState(false);
-  const [showEditarSubMenu, setShowEditarSubMenu] = useState(false);
 
-  const toggleArchivoSubMenu = () => {
-    setShowArchivoSubMenu(!showArchivoSubMenu);
-    setShowEditarSubMenu(false);
-  };
+  // Define las pestañas para la sección de "Archivo"
+  // Cada pestaña tiene una etiqueta y un contenido asociado
+  // Cada contenido es un formulario específico. 
+  // Este formulario está hecho en la carpeta correspondiente y aquí solo se importa.
+  // Por ejemplo, ProvinciasForm es un formulario para gestionar provincias.
+  const archivoTabs = [
+    { label: 'Provincias', content: <ProvinciasContent /> },
+    { label: 'Cantones', content: <CantonesContent /> },
+    { label: 'Ciudades', content: <CiudadesContent /> },
+    { label: 'Factura', content: <FacturaContent /> },
+    { label: 'Calendario', content: <CalendarioContent /> },
+    { label: 'Operaciones BBDD', content: <OperacionesBBDDContent /> },
+    { label: 'Comprobantes Fiscales', content: <ComprobantesFiscalesContent /> },
+    { label: 'Estaciones Pos-PV', content: <EstacionesPosPVContent /> },
+    { label: 'Auditoría | Control', content: <AuditoriaControlContent /> },
+    { label: 'Mantenimiento BBDD', content: <MantenimientoBBDDContent /> },
+  ];
 
-  const toggleEditarSubMenu = () => {
-    setShowEditarSubMenu(!showEditarSubMenu);
-    setShowArchivoSubMenu(false);
-  };
+  // Lo mismo para la sección de "Editar"
+  const editarTabs = [
+    { label: 'Empresas | Inicio', content: <div>Aqui debe aparecer el formulario de empresas</div> },
+    { label: 'Parámetros | Documentos', content: <div>Aqui debe aparecer el formulario de Parámetros | Documentos</div> },
+    { label: 'Unidades | Medida', content: <div>Aqui debe aparecer el formulario de Unidades | Medida</div> },
+    { label: 'Comisiones | Productos', content: <div>Aqui debe aparecer el formulario de Comisiones | Productos</div> },
+    { label: 'Tipos de Crédito', content: <div>Aqui debe aparecer el formulario deTipos de Crédito</div> },
+    { label: 'Operaciones | Caja Principal', content: <div>aca Operaciones | Caja Principal</div> },
+    { label: 'Causas | No Venta', content: <div>aca de Causas | No Venta</div> },
+    { label: 'Tasa de Cambio', content: <div>aca de Tasa de Cambio</div> },
+    { label: 'Conceptos Generales', content: <div>aca de Conceptos Generales</div> },
+    { label: 'Seguridad | Perfiles Usuario', content: <div>y aca de Seguridad | Perfiles Usuario</div> },
+  ];
+
+  const [activeMenu, setActiveMenu] = useState<'archivo' | 'editar' | null>(null);
 
   return (
-    <div className="bg-white border-b border-gray-200 p-4 mb-6">
-      <div className="flex items-center justify-between mb-5">
-        <h2 className="text-xl font-bold text-gray-800 ">Configuración</h2>
+    <div className="bg-white border-b border-gray-200 p-4">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-xl font-bold text-gray-800">Configuración</h2>
       </div>
-    <br />
-      <div className="flex flex-wrap items-center gap-2">
-        <SubMenuButton icon={FcSurvey} label="Archivo" onClick={toggleArchivoSubMenu} />
-        <SubMenuButton icon={FcEditImage} label="Editar" onClick={toggleEditarSubMenu} />
+      <br /> 
+      <div className="flex space-x-4 mb-4">
+        <button
+          className={`px-4 py-2 text-sm font-medium ${activeMenu === 'archivo' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+          onClick={() => setActiveMenu('archivo')}
+        >
+          Archivo
+        </button>
+        <button
+          className={`px-4 py-2 text-sm font-medium ${activeMenu === 'editar' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+          onClick={() => setActiveMenu('editar')}
+        >
+          Editar
+        </button>
       </div>
-      <br />
- 
-      {showArchivoSubMenu && (
-      <div className='bg-gray-50 p-4 rounded-lg shadow-md mt-4'> Archivo
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 pt-2 text-xl">
-          <SubMenuButton icon={FcDepartment} label="Provincias" onClick={() => {}} />
-          <SubMenuButton icon={FcDepartment} label="Cantones" onClick={() => {}} />
-          <SubMenuButton icon={FcDepartment} label="Ciudades" onClick={() => {}} />
-          <SubMenuButton icon={FcDocument} label="Factura" onClick={() => {}} />
-          <SubMenuButton icon={FcCalendar} label="Calendario" onClick={() => {}} />
-          <SubMenuButton icon={FcBusinessman} label="Operaciones Base de Datos" onClick={() => {}} />
-          <SubMenuButton icon={FcSurvey} label="Comprobantes Fiscales" onClick={() => {}} />
-          <SubMenuButton icon={FcPackage} label="Estaciones Pos-PV" onClick={() => {}} />
-          <SubMenuButton icon={FcDocument} label="Auditoría | Control" onClick={() => {}} />
-          <SubMenuButton icon={FcBusinessman} label="Mantenimiento BBDD" onClick={() => {}} />
-        </div>
-      </div>
-      )}
-
-      {showEditarSubMenu && (
-      <div className='bg-gray-50 p-4 rounded-lg shadow-md mt-4'> Editar
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 pt-2 text-xs">
-          <SubMenuButton icon={FcBusiness} label="Empresas | Inicio" onClick={() => {}} />
-          <SubMenuButton icon={FcDocument} label="Parámetros | Documentos" onClick={() => {}} />
-          <SubMenuButton icon={FcCalendar} label="Unidades | Medida" onClick={() => {}} />
-          <SubMenuButton icon={FcBusinessman} label="Comisiones | Productos" onClick={() => {}} />
-          <SubMenuButton icon={FcSurvey} label="Tipos de Crédito" onClick={() => {}} />
-          <SubMenuButton icon={FcSalesPerformance} label="Operaciones | Caja Principal" onClick={() => {}} />
-          <SubMenuButton icon={FcSalesPerformance} label="Causas | No Venta" onClick={() => {}} />
-          <SubMenuButton icon={FcSalesPerformance} label="Tasa de Cambio" onClick={() => {}} />
-          <SubMenuButton icon={FcSalesPerformance} label="Conceptos Generales" onClick={() => {}} />
-          <SubMenuButton icon={FcSalesPerformance} label="Seguridad | Perfiles Usuario" onClick={() => {}} />
-        </div>
-      </div>
-      )}
+      {activeMenu === 'archivo' && <RadixTabs tabs={archivoTabs} />}
+      {activeMenu === 'editar' && <RadixTabs tabs={editarTabs} />}
     </div>
   );
 };
