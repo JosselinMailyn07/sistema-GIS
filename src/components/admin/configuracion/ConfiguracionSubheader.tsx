@@ -2,14 +2,15 @@
 import React, { useState } from 'react';
 import * as Tabs from '@radix-ui/react-tabs';
 import { ProvinciasForm } from './archivo/provincias/provincias';
+import { CantonesForm } from './archivo/cantones/cantones';
+import { CiudadesForm } from './archivo/ciudades/ciudades';
 
 
 // Define los contenidos de las pestañas
 // Cada contenido es un componente diferente que contiene formularios o información específica
 const ProvinciasContent = () => <div> <ProvinciasForm /></div>;
-const CantonesContent = () => <div> formulario de cantones</div>;
-const CiudadesContent = () => <div>formulario de</div>;
-const FacturaContent = () => <div></div>;
+const CantonesContent = () => <div> <CantonesForm/> </div>;
+const CiudadesContent = () => <div> <CiudadesForm/> </div>;
 const CalendarioContent = () => <div></div>;
 const OperacionesBBDDContent = () => <div></div>;
 const ComprobantesFiscalesContent = () => <div></div>;
@@ -62,7 +63,6 @@ export const ConfiguracionSubHeader = () => {
     { label: 'Provincias', content: <ProvinciasContent /> },
     { label: 'Cantones', content: <CantonesContent /> },
     { label: 'Ciudades', content: <CiudadesContent /> },
-    { label: 'Factura', content: <FacturaContent /> },
     { label: 'Calendario', content: <CalendarioContent /> },
     { label: 'Operaciones BBDD', content: <OperacionesBBDDContent /> },
     { label: 'Comprobantes Fiscales', content: <ComprobantesFiscalesContent /> },
@@ -95,16 +95,17 @@ export const ConfiguracionSubHeader = () => {
       <br /> 
       <div className="flex space-x-4 mb-4">
         <button
-          className={`px-4 py-2 text-sm font-medium ${activeMenu === 'archivo' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
-          onClick={() => setActiveMenu('archivo')}
+          className= {`px-4 py-2 text-sm font-medium  ${activeMenu === 'archivo' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+          onClick={() => setActiveMenu('archivo')} 
         >
-          Archivo
+          
+          ARCHIVO
         </button>
         <button
           className={`px-4 py-2 text-sm font-medium ${activeMenu === 'editar' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
-          onClick={() => setActiveMenu('editar')}
+          onClick={() => setActiveMenu('editar')} 
         >
-          Editar
+          EDITAR
         </button>
       </div>
       {activeMenu === 'archivo' && <RadixTabs tabs={archivoTabs} />}
