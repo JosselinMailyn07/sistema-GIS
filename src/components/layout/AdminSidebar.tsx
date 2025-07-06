@@ -52,15 +52,7 @@ interface MenuItem {
   path?: string;
   children?: MenuItem[];
 }
-const ColoredLine = ({ color }) => (
-  <hr
-      style={{
-          color: color,
-          backgroundColor: color,
-          height: 5
-      }}
-  />
-);
+
 
 // Configuración de menús para cada rol
 const adminMenuItems: MenuItem[] = [
@@ -326,84 +318,6 @@ const adminMenuItems: MenuItem[] = [
     title: 'Tesorería',
     icon: DollarSign,
     path: '/admin/tesoreria',
-    children: [
-      {
-        id: 'bancos',
-        title: 'Bancos',
-        icon: Landmark,
-        path: '/admin/bancos'
-      },
-      {
-        id: 'chequeras',
-        title: 'Chequeras',
-        icon: Banknote,
-        path: '/admin/chequeras'
-      },
-      {
-        id: 'movimientos-bancarios',
-        title: 'Movimientos Bancarios',
-        icon: ArrowLeftRight,
-        path: '/admin/movimientos-bancarios'
-      },
-      {
-        id: 'conciliaciones-bancarias',
-        title: 'Conciliaciones Bancarias',
-        icon: Handshake,
-        path: '/admin/conciliaciones-bancarias'
-      },
-      {
-        id: 'movimientos-caja-principal',
-        title: 'Movimientos de Caja Principal',
-        icon: HandCoins,
-        path: '/admin/movimientos-caja-principal'
-      },
-      {
-        id: 'depositos',
-        title: 'Depósitos',
-        icon: ArchiveRestore,
-        path: '/admin/depositos'
-      },
-
-      {
-        id: 'ediciones-cajas',
-        title: 'Ediciones de Cajas',
-        icon: FilePenLine,
-        path: '/admin/ediciones-cajas',
-        children: [
-          {
-            id: 'cajas',
-            title: 'Cajas',
-            icon: Box,
-            path: '/admin/ediciones-cajas/cajas'
-          },
-          {
-            id: 'cajeros',
-            title: 'Cajeros',
-            icon: User,
-            path: '/admin/ediciones-cajas/cajeros'
-          },
-          {
-            id: 'turnos',
-            title: 'Turnos',
-            icon: ListChecks,
-            path: '/admin/ediciones-cajas/turnos'
-          },
-        ]
-      },
-
-      {
-        id: 'apertura-caja',
-        title: 'Apertura de Cajas',
-        icon: PackageOpen,
-        path: '/admin/apertura-caja'
-      },
-      {
-        id: 'cierre-caja',
-        title: 'Cierre de Cajas',
-        icon: Package,
-        path: '/admin/cierre-caja'
-      }
-    ]
   }
 
 
