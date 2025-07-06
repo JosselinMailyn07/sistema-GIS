@@ -31,7 +31,8 @@ import { Pagos } from "./components/admin/compras/pagos/pagos";
 import { MovimientosProveedores } from "./components/admin/compras/movimientos-proveedores/movimientos-proveedores";
 import { GruposProveedores } from "./components/admin/compras/grupos-proveedores/grupos-proveedores";
 import { RecepcionesBodegas } from "./components/admin/inventario/recepciones-bodegas/recepciones-bodega";
-import { Bancos } from "./components/admin/tesoreria/bancos/layout";
+
+import { Tesoreria } from "./components/admin/tesoreria/tesoreriaTabs";
 import { ConfiguracionSubHeader } from "./components/admin/configuracion/ConfiguracionSubheader";
 const queryClient = new QueryClient();
 
@@ -66,7 +67,8 @@ const App = () => (
             <Route path="estimado-ventas" element={<EstimadoVentas/>} />
             <Route path="causa-no-ventas" element={<CausaNoVentas/>} />
             <Route path="grupos-clientes" element={<GruposClientes />} />
-            <Route path="bancos" element={<Bancos />} />
+
+
             
     
             {/* Rutas de Configuración  */}
@@ -112,8 +114,9 @@ const App = () => (
             <Route index element={<Navigate to="reports" replace />} />
 
 
+          {/* Rutas de tesorería */}
 
-
+            <Route path="tesoreria" element={<Tesoreria />} />
 
 
 
