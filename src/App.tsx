@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/login";
+import Registro from "./pages/registro";
 import { AdminLayout } from "./components/layout/AdminLayout";
 import { AdminReports } from "./components/admin/ventas/reports/AdminReports";
 import { Factura } from "./components/admin/ventas/factura/factura";
@@ -49,6 +50,7 @@ const App = () => (
 
           {/* Login Route */}
           <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
 
 
           {/* Admin Routes */}
