@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 interface Campo {
   key: string;
   label: string;
@@ -16,9 +14,7 @@ interface TableTemplateTestProps {
 }
 
 export const Tablas = ({ campos, datos}: TableTemplateTestProps) => {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-
-
+  
   return (
     <table className="min-w-full table-auto border border-gray-300">
       <thead className="bg-gray-100">
