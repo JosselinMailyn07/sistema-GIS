@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal } from '@/components/admin/tesoreria/modal';
+import { Modal } from '../../layout/modal'; // Asegúrate de que la ruta sea correcta
 
 
 interface Titulo {
