@@ -1,6 +1,6 @@
 import React from 'react';
-import { Inputs } from '@/components/admin/tesoreria/Inputs';
-import { BotonesPrueba } from './pruebabotonesmoda';
+import { Inputs } from '@/components/layout/Inputs';
+import { BotonesPrueba } from '../admin/tesoreria/pruebabotonesmoda'; // Asegúrate de que la ruta sea correcta
 
 
 interface ModalProps {
