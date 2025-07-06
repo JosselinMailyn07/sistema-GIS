@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { botones } from '@/components/layout/botones'; // Botones de carpeta layout 
-import { Tablas } from '@/components/admin/tesoreria/Tabla';
+import { Tablas } from '@/components/layout/Tabla';
 // import { botones } from '@/components/admin/tesoreria/botones'; // Botones de carpeta tesoreria (Josué)
 
 // Datos estáticos de provincias
