@@ -4,13 +4,9 @@ import * as Tabs from '@radix-ui/react-tabs';
 import { ProvinciasForm } from './archivo/provincias/provincias';
 import { CantonesForm } from './archivo/cantones/cantones';
 import { CiudadesForm } from './archivo/ciudades/ciudades';
-<<<<<<< HEAD
+import  Calendario  from './archivo/calendario/calendario';
 import { AuditoriaForm } from './archivo/auditoria-control/auditoria-control';
 import { ComprobantesFiscalesForm } from './archivo/comprobantes-fiscales/comprobantesFiscales';
-=======
-import  Calendario  from './archivo/calendario/calendario';
-
->>>>>>> 01234cfd0bec167ece27c69c58436afb8213ee34
 
 
 // Define los contenidos de las pestañas
@@ -18,7 +14,7 @@ import  Calendario  from './archivo/calendario/calendario';
 const ProvinciasContent = () => <div> <ProvinciasForm /></div>;
 const CantonesContent = () => <div> <CantonesForm/> </div>;
 const CiudadesContent = () => <div> <CiudadesForm/> </div>;
-const CalendarioContent = () => <div><Calendario /></div>;
+const CalendarioContent = () => <div></div>;
 const OperacionesBBDDContent = () => <div></div>;
 const ComprobantesFiscalesContent = () => <div> <ComprobantesFiscalesForm/> </div>;
 const EstacionesPosPVContent = () => <div></div>;
