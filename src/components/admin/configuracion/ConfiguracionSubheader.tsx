@@ -4,6 +4,8 @@ import * as Tabs from '@radix-ui/react-tabs';
 import { ProvinciasForm } from './archivo/provincias/provincias';
 import { CantonesForm } from './archivo/cantones/cantones';
 import { CiudadesForm } from './archivo/ciudades/ciudades';
+import { AuditoriaForm } from './archivo/auditoria-control/auditoria-control';
+import { ComprobantesFiscalesForm } from './archivo/comprobantes-fiscales/comprobantesFiscales';
 
 
 // Define los contenidos de las pestañas
@@ -13,9 +15,9 @@ const CantonesContent = () => <div> <CantonesForm/> </div>;
 const CiudadesContent = () => <div> <CiudadesForm/> </div>;
 const CalendarioContent = () => <div></div>;
 const OperacionesBBDDContent = () => <div></div>;
-const ComprobantesFiscalesContent = () => <div></div>;
+const ComprobantesFiscalesContent = () => <div> <ComprobantesFiscalesForm/> </div>;
 const EstacionesPosPVContent = () => <div></div>;
-const AuditoriaControlContent = () => <div></div>;
+const AuditoriaControlContent = () => <div> <AuditoriaForm/> </div>;
 const MantenimientoBBDDContent = () => <div></div>;
 
 // Define el tipo de las pestañas
