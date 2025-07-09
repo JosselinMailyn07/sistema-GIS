@@ -246,63 +246,12 @@ const adminMenuItems: MenuItem[] = [
 
 
   // Inventario
- {
-    id: 'inventario',
-    title: 'Inventarios',
-    icon: FileText,
-    children:  [
-      {
-        id: 'recepciones-bodega',
-        title: 'Recepciones de Bodega',
-        icon: UserCheck,
-        path: '/admin/recepciones-bodegas'
-      },
-
-      {
-        id: 'movimientos-productos',
-        title: 'Movimientos de productos',
-        icon: UserCheck,
-        path: '/admin/movimientos-productos'
-      },
-      {
-        id: 'transferencias-bodegas',
-        title: 'Transferencias de Bodegas',
-        icon: UserCheck,
-        path: '/admin/transferencias-bodegas'
-      },
-      {
-        id: 'guias-remision',
-        title: 'Guias de Remision',
-        icon: UserCheck,
-        path: '/admin/guias-remision'
-      },
-      {
-        id: 'revoluciones-lotes',
-        title: 'Revoluciones por Lotes',
-        icon: UserCheck,
-        path: '/admin/revoluciones-lotes'
-      },
-      {
-        id: 'inventario-inicial-fisico',
-        title: 'Inventario Inicial | Fisico',
-        icon: UserCheck,
-        path: '/admin/inventario-inicial-fisico'
-      },
-      {
-        id: 'grupo-productos',
-        title: 'Grupos de Productos',
-        icon: UserCheck,
-        path: '/admin/grupo-productos'
-      },
-      {
-        id: 'bodega',
-        title: 'Bodega',
-        icon: UserCheck,
-        path: '/admin/bodega'
-      }
-    ]
-  },
-
+    {
+      id: 'Inventario',
+      title: 'Inventario',
+      icon: Box,
+      path: '/admin/inventario'
+    },
 
 
 

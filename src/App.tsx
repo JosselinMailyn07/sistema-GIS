@@ -30,7 +30,7 @@ import { Proveedores } from "./components/admin/compras/proveedores/proveedores"
 import { Pagos } from "./components/admin/compras/pagos/pagos";
 import { MovimientosProveedores } from "./components/admin/compras/movimientos-proveedores/movimientos-proveedores";
 import { GruposProveedores } from "./components/admin/compras/grupos-proveedores/grupos-proveedores";
-import { RecepcionesBodegas } from "./components/admin/inventario/recepciones-bodegas/recepciones-bodega";
+import { InventarioMain } from "./components/admin/inventario/inventarioMain";
 
 import { Tesoreria } from "./components/admin/tesoreria/tesoreriaTabs";
 import { ConfiguracionSubHeader } from "./components/admin/configuracion/ConfiguracionTabs";
@@ -100,7 +100,7 @@ const App = () => (
 
 
             {/* Rutas de inventario */}
-            <Route path="recepciones-bodegas" element={<RecepcionesBodegas/>} />
+            <Route path="inventario" element={<InventarioMain />} />
 
             
 
