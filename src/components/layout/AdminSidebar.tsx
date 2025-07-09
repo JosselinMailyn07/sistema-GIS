@@ -31,7 +31,8 @@ import {
   FilePenLine,
   ArchiveRestore,
   ListChecks,
-  Box
+  Box,
+  ShoppingBag
 } from 'lucide-react';
 import {
   Select,
@@ -58,8 +59,8 @@ interface MenuItem {
 const adminMenuItems: MenuItem[] = [
   // Ventas
   {
-    id: 'ventas',
-    title: 'Ventas',
+    id: 'pruebas',
+    title: 'PRUEBAS',
     icon: BarChart3,
     children: [
       {
@@ -74,78 +75,20 @@ const adminMenuItems: MenuItem[] = [
         icon: ClipboardList,
         path: '/admin/factura'
       },
-      {
-        id: 'notas-entrega',
-        title: 'Notas de entrega',
-        icon: Settings,
-        path: '/admin/nota-entrega'
-      },
-      {
-        id: 'pedidos',
-        title: 'Pedidos',
-        icon: InboxIcon,
-        path: '/admin/pedidos'
-      },
-      {
-        id: 'cotizaciones',
-        title: 'Cotizaciones',
-        icon: Settings,
-        path: '/admin/cotizaciones'
-      },
-      {
-        id: 'clientes',
-        title: 'Clientes',
-        icon: Users,
-        path: '/admin/clientes'
-      },
-      {
-        id: 'cobranzas',
-        title: 'Cobranzas',
-        icon: DollarSign,
-        path: '/admin/cobranzas'
-      },
-      {
-        id: 'movimientos-clientes',
-        title: 'Movimientos de Clientes',
-        icon: Settings,
-        path: '/admin/movimientos-clientes'
-      },
-      {
-        id: 'rutas-visitas',
-        title: 'Rutas Visitas',
-        icon: Settings,
-        path: '/admin/rutas-visitas'
-      },
-      {
-        id: 'mantenimiento-rutas',
-        title: 'Mantenimiento de Rutas',
-        icon: Settings,
-        path: '/admin/mantenimiento-rutas'
-      },
-      {
-        id: 'estimado-ventas',
-        title: 'Estimado de Ventas',
-        icon: Settings,
-        path: '/admin/estimado-ventas'
-      },
-      {
-        id: 'causa-no-ventas',
-        title: 'Causa de No Ventas',
-        icon: Settings,
-        path: '/admin/causa-no-ventas'
-      },
-      {
-        id: 'grupos-clientes',
-        title: 'Grupos de Clientes',
-        icon: Settings,
-        path: '/admin/grupos-clientes'
-      }
+      
     ]
   },
 
 
 
+ // Ventas
 
+  {
+    id: 'ventas',
+    title: 'Ventas',
+    icon: BarChart3,
+    path: '/admin/ventas'
+  },
 
 
 
@@ -154,155 +97,44 @@ const adminMenuItems: MenuItem[] = [
 
   
   // Compras
+
   {
     id: 'compras',
     title: 'Compras',
-    icon: FileText,
-    children: [
-      {
-        id: 'compras',
-        title: 'Compras',
-        icon: UserCheck,
-        path: '/admin/compras'
-      },
-      {
-        id: 'recepciones',
-        title: 'Recepciones',
-        icon: Calendar,
-        path: '/admin/recepciones'
-      },
-      {
-        id: 'ordenes-compra',
-        title: 'Órdenes de Compra',
-        icon: UserCheck,
-        path: '/admin/ordenes-compra'
-      },
-      {
-        id: 'requisiciones',
-        title: 'Requisiciones',
-        icon: UserCheck,
-        path: '/admin/requisiciones'
-      },
-      {
-        id: 'registro-productos',
-        title: 'Registro de Productos',
-        icon: UserCheck,
-        path: '/admin/registro-productos'
-      },
-      {
-        id: 'ajustes-precios',
-        title: 'Ajustes de Precios',
-        icon: UserCheck,
-        path: '/admin/ajustes-precios'
-      },
-      {
-        id: 'proveedores',
-        title: 'Proveedores',
-        icon: UserCheck,
-        path: '/admin/proveedores'
-      },
-      {
-        id: 'pagos',
-        title: 'Pagos',
-        icon: UserCheck,
-        path: '/admin/pagos'
-      },
-      {
-        id: 'movimientos-proveedores',
-        title: 'Movimientos de Proveedores',
-        icon: UserCheck,
-        path: '/admin/movimientos-proveedores'
-      },
-      {
-        id: 'grupos-proveedores',
-        title: 'Grupos de Proveedores',
-        icon: UserCheck,
-        path: '/admin/grupos-proveedores'
-      },
-      // Agregar modulos faltantes de compras
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ]
-    
+    icon: ShoppingBag,
+    path: '/admin/compras'
   },
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
   // Inventario
- {
-    id: 'inventario',
-    title: 'Inventarios',
-    icon: FileText,
-    children:  [
-      {
-        id: 'recepciones-bodega',
-        title: 'Recepciones de Bodega',
-        icon: UserCheck,
-        path: '/admin/recepciones-bodegas'
-      },
-
-      {
-        id: 'movimientos-productos',
-        title: 'Movimientos de productos',
-        icon: UserCheck,
-        path: '/admin/movimientos-productos'
-      },
-      {
-        id: 'transferencias-bodegas',
-        title: 'Transferencias de Bodegas',
-        icon: UserCheck,
-        path: '/admin/transferencias-bodegas'
-      },
-      {
-        id: 'guias-remision',
-        title: 'Guias de Remision',
-        icon: UserCheck,
-        path: '/admin/guias-remision'
-      },
-      {
-        id: 'revoluciones-lotes',
-        title: 'Revoluciones por Lotes',
-        icon: UserCheck,
-        path: '/admin/revoluciones-lotes'
-      },
-      {
-        id: 'inventario-inicial-fisico',
-        title: 'Inventario Inicial | Fisico',
-        icon: UserCheck,
-        path: '/admin/inventario-inicial-fisico'
-      },
-      {
-        id: 'grupo-productos',
-        title: 'Grupos de Productos',
-        icon: UserCheck,
-        path: '/admin/grupo-productos'
-      },
-      {
-        id: 'bodega',
-        title: 'Bodega',
-        icon: UserCheck,
-        path: '/admin/bodega'
-      }
-    ]
-  },
-
+    {
+      id: 'Inventario',
+      title: 'Inventario',
+      icon: Box,
+      path: '/admin/inventario'
+    },
 
 
 
