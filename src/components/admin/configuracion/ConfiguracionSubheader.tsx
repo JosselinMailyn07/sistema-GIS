@@ -5,7 +5,8 @@ import { ProvinciasForm } from './archivo/provincias/provincias';
 import { CantonesForm } from './archivo/cantones/cantones';
 import { CiudadesForm } from './archivo/ciudades/ciudades';
 import  Calendario  from './archivo/calendario/calendario';
-
+import { AuditoriaForm } from './archivo/auditoria-control/auditoria-control';
+import { ComprobantesFiscalesForm } from './archivo/comprobantes-fiscales/comprobantesFiscales';
 
 
 // Define los contenidos de las pestañas
@@ -13,11 +14,11 @@ import  Calendario  from './archivo/calendario/calendario';
 const ProvinciasContent = () => <div> <ProvinciasForm /></div>;
 const CantonesContent = () => <div> <CantonesForm/> </div>;
 const CiudadesContent = () => <div> <CiudadesForm/> </div>;
-const CalendarioContent = () => <div><Calendario /></div>;
+const CalendarioContent = () => <div></div>;
 const OperacionesBBDDContent = () => <div></div>;
-const ComprobantesFiscalesContent = () => <div></div>;
+const ComprobantesFiscalesContent = () => <div> <ComprobantesFiscalesForm/> </div>;
 const EstacionesPosPVContent = () => <div></div>;
-const AuditoriaControlContent = () => <div></div>;
+const AuditoriaControlContent = () => <div> <AuditoriaForm/> </div>;
 const MantenimientoBBDDContent = () => <div></div>;
 
 // Define el tipo de las pestañas

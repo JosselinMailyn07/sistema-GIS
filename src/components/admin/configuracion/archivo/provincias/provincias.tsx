@@ -49,11 +49,15 @@ export const ProvinciasForm = () => {
     <div className="p-4">
       <div className="grid p-2 mb-4 text-left"> 
         <h1 className="text-2xl font-bold">Provincias</h1>
+        {/* Se llama a los botones pero no pongan título. Además, se debe poner onSearch: setSearchTerm -> esto es para que la barra de búsqueda funcione, para que al momento de escribir
+        detecte la palabra y aparezca */}
         {botones({ titulo: "", onSearch: setSearchTerm })}
       </div>
-      
+      <div className="mt-4 p-4 border rounded-lg shadow-md">      
         {/* Llamamos a la clase tabla para usar el formato de tablas */}
+        { /* Se pasa los campos y los datos filtrados a la tabla */}
           <Tablas campos={campos} datos={filteredProvincias} />
+    </div>
     </div>
   );
 };
