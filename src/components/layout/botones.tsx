@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { FaPlus, FaEdit, FaTrash, FaSearch } from 'react-icons/fa';
+import { Modal } from '../layout/modal'; // Asegúrate de que la ruta sea correcta
 
 interface BotonesProps {
   titulo: string;
@@ -9,6 +10,7 @@ interface BotonesProps {
 
 export const botones = ({ titulo = "", onSearch }: BotonesProps) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [mostrarModal, setMostrarModal] = useState(false);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value;
@@ -20,7 +22,7 @@ export const botones = ({ titulo = "", onSearch }: BotonesProps) => {
     <div className="p-2">
       <h1 className="text-2xl font-bold text-left mb-4">{titulo}</h1>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Buscar por Código o Nombre</label>
+        <label className="block text-sm font-medium text-gray-700">Buscar por Código, Nombre o Usuario</label>
         <div className="relative">
           <input
             type="text"
@@ -35,17 +37,21 @@ export const botones = ({ titulo = "", onSearch }: BotonesProps) => {
         </div>
       </div>
       <div className="flex space-x-2">
-        <Button className="px-4 py-2 bg-success text-white rounded flex items-center">
+        <Button className="px-4 py-2 bg-success text-white rounded flex items-center" onClick={() => setMostrarModal(true)}>
           <FaPlus className="mr-2" /> Nuevo
         </Button>
         <Button className="px-4 py-2 bg-destructive text-white rounded flex items-center">
           <FaTrash className="mr-2" /> Eliminar
         </Button>
-        <Button className="px-4 py-2 bg-primary text-white rounded flex items-center">
+        <Button className="px-4 py-2 bg-primary text-white rounded flex items-center" onClick={() => setMostrarModal(true)}>
           <FaEdit className="mr-2" /> Editar
         </Button>
+        {mostrarModal && (
+          <Modal onClose={() => setMostrarModal(false)}
+
+          />
+        )}
       </div>
     </div>
   );
 };
-
