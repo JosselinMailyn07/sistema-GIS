@@ -27,6 +27,7 @@ export const ConfiguracionSubHeader = () => {
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={activeTab}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          
           <TabList onChange={handleTabChange} aria-label="Tabs de configuración">
             <Tab icon={<FaArchive />} iconPosition="top" label="ARCHIVO" value="1" />
             <Tab icon={<FaEdit />} iconPosition="top" label="EDITAR" value="2" />
@@ -36,26 +37,27 @@ export const ConfiguracionSubHeader = () => {
           <TabContext value={activeSubTab}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider', overflowX: 'auto' }}>
               <TabList onChange={handleSubTabChange} aria-label="Tabs de archivo" variant="scrollable" scrollButtons="auto">
-                <Tab icon={<FaCity />} iconPosition="top" label="Provincias" value="1-1" />
-                <Tab icon={<FaCity />} iconPosition="top" label="Cantones" value="1-2" />
-                <Tab icon={<FaCity />} iconPosition="top" label="Ciudades" value="1-3" />
-                <Tab icon={<FaCalendar />} iconPosition="top" label="Calendario" value="1-4" />
-                <Tab icon={<FaDatabase />} iconPosition="top" label="Operaciones BBDD" value="1-5" />
-                <Tab icon={<FaFileInvoice />} iconPosition="top" label="Comprobantes Fiscales" value="1-6" />
-                <Tab icon={<FaPrint />} iconPosition="top" label="Estaciones Pos-PV" value="1-7" />
-                <Tab icon={<FaChartLine />} iconPosition="top" label="Auditoría | Control" value="1-8" />
-                <Tab icon={<FaTools />} iconPosition="top" label="Mantenimiento BBDD" value="1-9" />
+                <Tab icon={<FaCity />} iconPosition="top" label="Provincias" value="provincias" /> 
+                <Tab icon={<FaCity />} iconPosition="top" label="Cantones" value="cantones" />
+                <Tab icon={<FaCity />} iconPosition="top" label="Ciudades" value="ciudades" />
+                <Tab icon={<FaCalendar />} iconPosition="top" label="Calendario" value="calendario" />
+                <Tab icon={<FaDatabase />} iconPosition="top" label="Operaciones BBDD" value="operacionesbbdd" />
+                <Tab icon={<FaFileInvoice />} iconPosition="top" label="Comprobantes Fiscales" value="comprobantes" />
+                <Tab icon={<FaPrint />} iconPosition="top" label="Estaciones Pos-PV" value="estaciones" />
+                <Tab icon={<FaChartLine />} iconPosition="top" label="Auditoría | Control" value="auditoria" />
+                <Tab icon={<FaTools />} iconPosition="top" label="Mantenimiento BBDD" value="mantenimiento" />
               </TabList>
             </Box>
-            <TabPanel value="1-1"><ProvinciasForm /></TabPanel>
-            <TabPanel value="1-2"><CantonesForm /></TabPanel>
-            <TabPanel value="1-3"><CiudadesForm /></TabPanel>
-            <TabPanel value="1-4"><Calendario/></TabPanel>
-            <TabPanel value="1-5"><p>Contenido de Operaciones BBDD</p></TabPanel>
-            <TabPanel value="1-6"><ComprobantesFiscalesForm /></TabPanel>
-            <TabPanel value="1-7"><p>Contenido de Estaciones Pos-PV</p></TabPanel>
-            <TabPanel value="1-8"><AuditoriaForm /></TabPanel>
-            <TabPanel value="1-9"><p>Contenido de Mantenimiento BBDD</p></TabPanel>
+            {/*En esta seccion redireccionamos las  */}
+            <TabPanel value="provincias"><ProvinciasForm /></TabPanel>
+            <TabPanel value="cantones"><CantonesForm /></TabPanel>
+            <TabPanel value="ciudades"><CiudadesForm /></TabPanel>
+            <TabPanel value="calendario"><Calendario/></TabPanel>
+            <TabPanel value="operacionesbbdd"><p>Contenido de Operaciones BBDD</p></TabPanel>
+            <TabPanel value="comprobantes"><ComprobantesFiscalesForm /></TabPanel>
+            <TabPanel value="estaciones"><p>Contenido de Estaciones Pos-PV</p></TabPanel>
+            <TabPanel value="auditoria"><AuditoriaForm /></TabPanel>
+            <TabPanel value="mantenimiento"><p>Contenido de Mantenimiento BBDD</p></TabPanel>
           </TabContext>
         </TabPanel>
         <TabPanel value="2">

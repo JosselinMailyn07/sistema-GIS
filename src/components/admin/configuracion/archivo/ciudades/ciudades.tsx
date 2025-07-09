@@ -12,19 +12,8 @@ const ciudades = [
   { codigo: 1, nombre: 'Cuenca' },
   { codigo: 2, nombre: 'Guaranda' },
   { codigo: 3, nombre: 'Azogues' },
-  { codigo: 4, nombre: 'Tulcan' },
-  { codigo: 5, nombre: 'Latacunga' },
-  { codigo: 6, nombre: 'Riobamba' },
-  { codigo: 7, nombre: 'Machala' },
-  { codigo: 8, nombre: 'Esmeraldas' },
-  { codigo: 9, nombre: 'Guayaquil' },
-  { codigo: 10, nombre: 'Ibarra' },
-  { codigo: 11, nombre: 'Loja' },
-  { codigo: 12, nombre: 'Babahoyo' },
-  { codigo: 12, nombre: 'Portoviejo' },
-  { codigo: 12, nombre: 'Macas' },
-  { codigo: 12, nombre: 'Tena' },
-  { codigo: 12, nombre: 'Manta' },
+  
+
   //poner todas las ciudades 
 
 ];
