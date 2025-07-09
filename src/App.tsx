@@ -33,7 +33,7 @@ import { GruposProveedores } from "./components/admin/compras/grupos-proveedores
 import { RecepcionesBodegas } from "./components/admin/inventario/recepciones-bodegas/recepciones-bodega";
 
 import { Tesoreria } from "./components/admin/tesoreria/tesoreriaTabs";
-import { ConfiguracionSubHeader } from "./components/admin/configuracion/ConfiguracionSubheader";
+import { ConfiguracionSubHeader } from "./components/admin/configuracion/ConfiguracionTabs";
 const queryClient = new QueryClient();
 
 const App = () => (
