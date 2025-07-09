@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/login";
 import Registro from "./pages/registro";
 import { AdminLayout } from "./components/layout/AdminLayout";
+
 import { AdminReports } from "./components/admin/ventas/reports/AdminReports";
 import { Factura } from "./components/admin/ventas/factura/factura";
 import { NotasEntrega } from "./components/admin/ventas/notas-entrega/notas-entrega";
@@ -35,6 +36,15 @@ import { InventarioMain } from "./components/admin/inventario/inventarioMain";
 
 import { Tesoreria } from "./components/admin/tesoreria/tesoreriaTabs";
 import { ConfiguracionSubHeader } from "./components/admin/configuracion/ConfiguracionTabs";
+import { AdminReports } from "./components/admin/pruebas/reports/AdminReports";
+import { Factura } from "./components/admin/pruebas/factura/factura";
+
+import { RecepcionesBodegas } from "./components/admin/inventario/recepciones-bodegas/recepciones-bodega";
+
+import { Tesoreria } from "./components/admin/tesoreria/tesoreriaTabs";
+import { ConfiguracionSubHeader } from "./components/admin/configuracion/ConfiguracionSubheader";
+import { Ventas } from "./components/admin/ventas/ventasTabs";
+import { Compras } from "./components/admin/compras/comprasTabs";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -55,21 +65,11 @@ const App = () => (
 
           {/* Admin Routes */}
           <Route path="/admin/*" element={<AdminLayout />}>
-            {/* Rutas de Ventas */}
+            {/* Rutas de PRUEBAS */}
             <Route path="reports" element={<AdminReports />} />
             <Route path="factura" element={<Factura />} />
-            <Route path="nota-entrega" element={<NotasEntrega/>} />
-            <Route path="pedidos" element={<Pedidos/>} />
-            <Route path="cotizaciones" element={<Cotizaciones/>} />
-            <Route path="clientes" element={<Clientes/>} />
-            <Route path="cobranzas" element={<Cobranzas/>} />
-            <Route path="movimientos-clientes" element={<MovimientosClientes/>} />
-            <Route path="rutas-visitas" element={<RutasVisitas/>} />
-            <Route path="mantenimiento-rutas" element={<MantenimientoRutas/>} />
-            <Route path="estimado-ventas" element={<EstimadoVentas/>} />
-            <Route path="causa-no-ventas" element={<CausaNoVentas/>} />
-            <Route path="grupos-clientes" element={<GruposClientes />} />
-
+            
+    
 
             
     
@@ -80,22 +80,15 @@ const App = () => (
 
 
 
-
+            {/* Rutas de Ventas */}
+            <Route path="ventas" element={<Ventas/>} />
 
 
 
 
             {/* Rutas de Compras/Gastos */}
             <Route path="compras" element={<Compras/>} />
-            <Route path="recepciones" element={<Recepciones/>} />
-            <Route path="ordenes-compra" element={<OrdenesCompra/>} />
-            <Route path="requisiciones" element={<Requisiciones/>} />
-            <Route path="registro-productos" element={<RegistroProductos/>} />
-            <Route path="ajustes-precios" element={<AjustesPrecios/>} />
-            <Route path="proveedores" element={<Proveedores/>} />
-            <Route path="pagos" element={<Pagos/>} />
-            <Route path="movimientos-proveedores" element={<MovimientosProveedores/>} />
-            <Route path="grupos-proveedores" element={<GruposProveedores/>} />
+            
             
             {/* Rutas de Clientes */}
 
