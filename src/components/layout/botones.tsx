@@ -22,7 +22,7 @@ export const botones = ({ titulo = "", onSearch }: BotonesProps) => {
     <div className="p-2">
       <h1 className="text-2xl font-bold text-left mb-4">{titulo}</h1>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Buscar por Código o Nombre</label>
+        <label className="block text-sm font-medium text-gray-700">Buscar por Código, Nombre o Usuario</label>
         <div className="relative">
           <input
             type="text"

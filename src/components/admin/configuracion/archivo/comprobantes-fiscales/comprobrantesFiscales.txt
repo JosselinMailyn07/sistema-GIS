@@ -1,0 +1,278 @@
+Sub xmlfac()
+
+ Set fileobject = CreateObject("Scripting.FileSystemObject")
+ 
+ Set oFile = fileobject.OpenTextFile("C:\Archivos de programa\Gis\Conexion.txt" , 1,False)
+
+ S=oFile.ReadLine 
+ oFile.Close
+ Set oFile = Nothing
+ Set fileobject = Nothing
+
+
+ Dim ivaIncluido
+
+ Dim sql, si, cant, puni, ptota, iv, por, XML
+
+ set base=CreateObject("ADODB.connection")
+
+ base.Open S
+ 'base.Open "DSN=Gis"
+
+
+sql = "SELECT * FROM Empresa"
+
+Set jg = base.Execute(sql)
+
+ Set fso = CreateObject("Scripting.FileSystemObject")
+Set fxml = fso.CreateTextFile("c:\libros.xml", True)
+fxml.WriteLine "<?xml version=""1.0"" encoding=""UTF-8"" standalone=""yes"" ?>"
+
+
+ fxml.WriteLine "<factura id=""comprobante"" version=""1.1.0"">"
+
+ fxml.WriteLine "<infoTributaria>"
+ If Not jg.EOF Then
+
+    fxml.WriteLine "<ambiente>" & "1" & "</ambiente>"
+
+    fxml.WriteLine "<tipoemision>" & "1" & "</tipoemision>"
+
+    fxml.WriteLine "<razonSocial>" & jg.Fields(1) & "</razonSocial>"
+
+    fxml.WriteLine "<nombreComercial>" & jg.Fields(1) & "</nombreComercial>"
+
+    fxml.WriteLine "<ruc>" & jg.Fields(5) & "</ruc>"
+
+    fxml.WriteLine "<claveAcceso>" & "2103" & "</claveAcceso>"
+
+    fxml.WriteLine "<numAut>" & jg.Fields(5) & "</numAut>"
+
+    fxml.WriteLine "<fechaAutorizacion>" & jg.Fields(7) & "</fechaAutorizacion>"
+
+    fxml.WriteLine "<codDoc>" & jg.Fields(5) & "</codDoc>"
+
+    fxml.WriteLine "<estab>" & jg.Fields(12) & "</estab>"
+
+    fxml.WriteLine "<ptoEmi>" & jg.Fields(13) & "</ptoEmi>"
+
+    fxml.WriteLine "<secuencial>" & jg.Fields(14) & "</secuencial>"
+
+    fxml.WriteLine "<dirMatriz>" & jg.Fields(3) & "</dirMatriz>"
+
+    fxml.WriteLine "<caducidad>" & jg.Fields(8) & "</caducidad>"
+
+ End If
+
+ fxml.WriteLine "</infoTributaria>"
+
+Set jg = Nothing
+
+ sql = "SELECT Numero, FechaEmision, CodigoCliente, TotalBruto, Impuesto, TotalFactura, Nombre, RIF, DescFac, Vencimiento, Direccion FROM dbo.TmpJodasFactura "
+
+ Set jg = base.Execute(sql)
+
+fxml.WriteLine "<infoFactura>"
+
+ If Not jg.EOF Then
+
+    fxml.WriteLine "<fechaEmision>" & jg.Fields(1) & "</fechaEmision>"
+
+    fxml.WriteLine "<dirEstablecimiento>" & jg.Fields(10) & "</dirEstablecimiento>"
+
+    fxml.WriteLine "<contribuyenteEspecial>" & "12345" & "</contribuyenteEspecial>"
+
+    fxml.WriteLine "<obligadoContabilidad>" & "NO" & "</obligadoContabilidad>"
+
+    fxml.WriteLine "<tipoIdentificacionComprador>" & "04" & "</tipoIdentificacionComprador>"
+
+    fxml.WriteLine "<razonSocialComprador>" & jg.Fields(6) & "</razonSocialComprador>"
+
+    fxml.WriteLine "<identificacionComprador>" & jg.Fields(7) & "</identificacionComprador>"
+
+    Set jg1 = base.Execute("SELECT SUM(TotalRenglon) AS Expr1 From dbo.TmpJodasFactura Where (PorcentajeIva = 0)")
+
+    If IsNull(jg1.Fields(0)) Then
+
+        si = "0.00"
+
+    Else
+
+        si = jg1.Fields(0)
+
+    End If
+
+    Set jg1 = Nothing
+
+    fxml.WriteLine "<totalSinImpuestos>" & si & "</totalSinImpuestos>"
+
+    fxml.WriteLine "<totalDescuento>" & Cstr(jg.Fields(8)) & "</totalDescuento>"
+
+    fxml.WriteLine "<totalConImpuestos>"
+
+    Set jg1 = base.Execute("SELECT TotalRenglon, TotalBruto From dbo.TmpJodasFactura WHERE  (PorcentajeIva <> 0)")
+
+
+    Do Until  jg1.EOF
+
+        fxml.WriteLine "<totalImpuesto>"
+
+            fxml.WriteLine "<codigo>" & "2" & "</codigo>"
+
+            fxml.WriteLine "<codigoPorcentaje>" & "2" & "</codigoPorcentaje>"
+
+
+            fxml.WriteLine "<baseImponible>" & Cstr(jg1.Fields(1)) & "</baseImponible>"
+   'msgbox "hola"
+
+            fxml.WriteLine "<valor>" & Cstr(jg1.Fields(0)) & "</valor>"
+
+        fxml.WriteLine "</totalImpuesto>"
+
+        jg1.MoveNext
+     loop
+
+    Set jg1 = Nothing
+
+   fxml.WriteLine "</totalConImpuestos>"
+
+    fxml.WriteLine "<propina>" & "0.00" & "</propina>"
+
+    fxml.WriteLine "<importeTotal>" & Cstr(jg.Fields(5)) & "</importeTotal>"
+
+    fxml.WriteLine "<moneda>" & "DOLAR" & "</moneda>"
+
+ End If
+
+ fxml.WriteLine "</infoFactura>"
+
+Set jg = Nothing
+
+ Set jg = base.Execute("select * from parametros  where documento='FACTURA' ")
+
+If Not jg.EOF Then 
+ ivaIncluido = Not jg.Fields(14)  'jg!param14 
+end if
+
+ Set jg = Nothing
+
+'MsgBox ivaIncluido
+
+ Set jg = Nothing
+
+ sql = "SELECT CodigoProducto, Descripcion, Cantidad, Precio, Descuento, TotalRenglon, PorcentajeIva FROM dbo.TmpJodasFactura"
+
+ Set jg = base.Execute(sql)
+
+ fxml.WriteLine "<detalles>"
+
+ Do Until  jg.EOF
+
+    fxml.WriteLine "<detalle>"
+
+        fxml.WriteLine "<codigoPrincipal>" & jg.Fields(0) & "</codigoPrincipal>"
+
+        fxml.WriteLine "<descripcion>" & jg.Fields(1) & "</descripcion>"
+
+        fxml.WriteLine "<cantidad>" & Cstr(jg.Fields(2)) & "</cantidad>"
+
+        cant = jg.Fields(2)
+
+        puni = jg.Fields(3)
+
+        ptota = jg.Fields(5)
+
+        por = jg.Fields(6)
+
+        If ivaIncluido And por = 12 Then
+
+            puni = puni / 1.12
+
+            ptota = puni * cant
+
+        End If
+
+        fxml.WriteLine "<precioUnitario>" & Cstr(puni) & "</precioUnitario>"
+
+        fxml.WriteLine "<precioTotalSinImpuesto>" & Cstr(ptota) & "</precioTotalSinImpuesto>"
+
+        fxml.WriteLine "<impuestos>"
+      
+        fxml.WriteLine "<impuesto>"
+
+            If por = 12 Then
+
+                iv = ptota * 0.12
+
+                fxml.WriteLine "<codigo>" & "2" & "</codigo>"
+
+                fxml.WriteLine "<codigoPorcentaje>" & "2" & "</codigoPorcentaje>"
+
+                fxml.WriteLine "<tarifa>" & Cstr(por) & "</tarifa>"
+
+                fxml.WriteLine "<baseImponible>" & Cstr(ptota) & "</baseImponible>"
+
+                fxml.WriteLine "<valor>" & Cstr(iv) & "</valor>"
+
+            Else
+
+                fxml.WriteLine "<codigo>" & "2" & "</codigo>"
+
+                fxml.WriteLine "<codigoPorcentaje>" & "2" & "</codigoPorcentaje>"
+
+                fxml.WriteLine "<tarifa>" & Cstr(por) & "</tarifa>"
+
+                fxml.WriteLine "<baseImponible>" & Cstr(ptota) & "</baseImponible>"
+
+                fxml.WriteLine "<valor>" & "0.00" & "</valor>"
+
+            End If
+
+        fxml.WriteLine "</impuesto>"
+
+        fxml.WriteLine "</impuestos>"
+
+    fxml.WriteLine "</detalle>"
+
+    jg.MoveNext
+
+ Loop
+
+ fxml.WriteLine "</detalles>"
+
+ Set jg = Nothing
+
+ sql = "SELECT * FROM Empresa"
+
+ Set jg = base.Execute(sql)
+
+fxml.WriteLine "<retenciones>"
+
+     fxml.WriteLine "<retencion>"
+
+         fxml.WriteLine "<codigo>" & "307" & "</codigo>"
+
+         fxml.WriteLine "<codigoPorcentaje>" & "1" & "</codigoPorcentaje>"
+
+        fxml.WriteLine "<tarifa>" & "12" & "</tarifa>"
+
+        fxml.WriteLine "<valor>" & "0.00" & "</valor>"
+
+    fxml.WriteLine "</retencion>"
+
+ fxml.WriteLine "</retenciones>"
+
+ Set jg = Nothing
+
+ fxml.WriteLine "<infoAdicional>"
+
+    fxml.WriteLine "<campoAdicional nombre=""Direccion"">" & "XYZ" & "</campoAdicional>"
+
+    fxml.WriteLine "<campoAdicional nombre=""Email"">" & "sri@gob.ec" & "</campoAdicional>"
+
+ fxml.WriteLine "</infoAdicional>"
+
+ fxml.WriteLine "</factura>"
+
+base.Close
+end sub
