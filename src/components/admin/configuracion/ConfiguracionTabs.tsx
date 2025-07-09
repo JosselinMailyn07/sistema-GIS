@@ -8,6 +8,9 @@ import { CiudadesForm } from './archivo/ciudades/ciudades';
 import { AuditoriaForm } from './archivo/auditoria-control/auditoria-control';
 import { ComprobantesFiscalesForm } from './archivo/comprobantes-fiscales/comprobantesFiscales';
 import Calendario from './archivo/calendario/calendario';
+import { OperacionesBaseDatos } from './archivo/operaciones-bbdd/operacionesBaseDatos';
+import  EstacionesForm  from './archivo/estaciones-pos-pv/estacionesPosPv';
+import  MantenimientoForm  from './archivo/mantenimiento-bbdd/mantenimientoBaseDatos';
 
 
 export const ConfiguracionSubHeader = () => {
@@ -53,11 +56,11 @@ export const ConfiguracionSubHeader = () => {
             <TabPanel value="cantones"><CantonesForm /></TabPanel>
             <TabPanel value="ciudades"><CiudadesForm /></TabPanel>
             <TabPanel value="calendario"><Calendario/></TabPanel>
-            <TabPanel value="operacionesbbdd"><p>Contenido de Operaciones BBDD</p></TabPanel>
+            <TabPanel value="operacionesbbdd"><OperacionesBaseDatos/>  </TabPanel>
             <TabPanel value="comprobantes"><ComprobantesFiscalesForm /></TabPanel>
-            <TabPanel value="estaciones"><p>Contenido de Estaciones Pos-PV</p></TabPanel>
+            <TabPanel value="estaciones"><EstacionesForm/></TabPanel>
             <TabPanel value="auditoria"><AuditoriaForm /></TabPanel>
-            <TabPanel value="mantenimiento"><p>Contenido de Mantenimiento BBDD</p></TabPanel>
+            <TabPanel value="mantenimiento"><MantenimientoForm /></TabPanel>
           </TabContext>
         </TabPanel>
         <TabPanel value="2">

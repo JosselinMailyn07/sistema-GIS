@@ -9,15 +9,6 @@ const cantones = [
   { codigo: 1, nombre: 'Sevilla de Oro' },
   { codigo: 2, nombre: 'Guachapala' },
   { codigo: 3, nombre: 'Sigsig' },
-  { codigo: 4, nombre: 'Giron' },
-  { codigo: 5, nombre: 'Gualaceo' },
-  { codigo: 6, nombre: 'Nabon' },
-  { codigo: 7, nombre: 'Paute' },
-  { codigo: 8, nombre: 'Pucará' },
-  { codigo: 9, nombre: 'San Fernando' },
-  { codigo: 10, nombre: 'Santa Isabel' },
-  { codigo: 11, nombre: 'Oña' },
-  { codigo: 12, nombre: 'Cuenca' },
 ];
 
 const campos = [
