@@ -1,5 +1,5 @@
 //dentro de /editar irán todos // los componentes que se necesiten para editar la configuración del sistema
-import { ConfiguracionSubHeader } from '../ConfiguracionSubheader';
+import { ConfiguracionSubHeader } from '../ConfiguracionTabs';
   
 export const Editar= () => {
   return (

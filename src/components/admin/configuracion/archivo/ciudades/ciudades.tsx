@@ -2,23 +2,26 @@
 //cantoones 
 import React, { useState } from 'react';
 import { botones } from '@/components/layout/botones'; // Botones de carpeta layout
+import { Tablas } from '@/components/layout/Tabla';
+
 // import { botones } from '@/components/admin/tesoreria/botones'; // Botones de carpeta tesoreria (Josué)
 
-// Datos estáticos de provincias
+// Datos estáticos de ciudades
 // Hay que traer los datos desde las API's, pero por ahora usamos datos estáticos
 const ciudades = [
-  { codigo: 0o1012, nombre: 'Sevilla de Oro' },
-  { codigo: 2, nombre: 'Guachapala' },
-  { codigo: 3, nombre: 'Sigsig' },
-  { codigo: 4, nombre: 'Giron' },
-  { codigo: 5, nombre: 'Gualaceo' },
-  { codigo: 6, nombre: 'Nabon' },
-  { codigo: 7, nombre: 'Paute' },
-  { codigo: 8, nombre: 'Pucará' },
-  { codigo: 9, nombre: 'San Fernando' },
-  { codigo: 10, nombre: 'Santa Isabel' },
-  { codigo: 11, nombre: 'Oña' },
-  { codigo: 12, nombre: 'Cuenca' },
+  { codigo: 1, nombre: 'Cuenca' },
+  { codigo: 2, nombre: 'Guaranda' },
+  { codigo: 3, nombre: 'Azogues' },
+  
+
+  //poner todas las ciudades 
+
+];
+
+// Definir los campos para la tabla de ciudades
+const campos = [
+  { key: 'codigo', label: 'Código' },
+  { key: 'nombre', label: 'Nombre' },
 ];
 
 export const CiudadesForm = () => {
@@ -31,51 +34,18 @@ export const CiudadesForm = () => {
   );
 
   return (
- /* Ponemos el texto de Provincias a la izquiera, es decir, arriba de los botones  */
+    /* Ponemos el texto de Provincias a la izquiera, es decir, arriba de los botones  */
     <div className="p-4">
-      <div className="grid p-2 mb-4 text-left"> 
+      <div className="grid p-2 mb-4 text-left">
         <h1 className="text-2xl font-bold">Ciudades</h1>
-        {botones({ titulo: "" })}
+        {botones({ titulo: "", onSearch: setSearchTerm })} {/* Se llama a los botones pero no pongan título. Además, se debe poner onSearch: setSearchTerm -> esto es para que la barra de búsqueda funcione, para que al momento de escribir detecte la palabra y aparezca */}
       </div>
-      <div className="mt-4 p-4 border rounded-lg shadow-md">
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Buscar por Código o Nombre</label>
-          <input
-            type="text"
-            placeholder="Buscar..."
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Código
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Nombre
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {filteredCiudades.map((ciudades) => (
-                <tr key={ciudades.codigo}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    {ciudades.codigo}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {ciudades.nombre}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      <div className="mt-4 p-4 border rounded-lg shadow-md">    
+        {/* Llamamos a la clase tabla para usar el formato de tablas */}
+        { /* Se pasa los campos y los datos filtrados a la tabla */}
+        <Tablas campos={campos} datos={filteredCiudades} />
       </div>
     </div>
+
   );
 };
