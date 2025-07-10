@@ -9,25 +9,7 @@ const provincias = [
   { codigo: 1, nombre: 'AZUAY' },
   { codigo: 2, nombre: 'BOLIVAR' },
   { codigo: 3, nombre: 'CAÑAR' },
-  { codigo: 4, nombre: 'CARCHI' },
-  { codigo: 5, nombre: 'COTOPAXI' },
-  { codigo: 6, nombre: 'CHIMBORAZO' },
-  { codigo: 7, nombre: 'EL ORO' },
-  { codigo: 8, nombre: 'ESMERALDAS' },
-  { codigo: 9, nombre: 'GUAYAS' },
-  { codigo: 10, nombre: 'IMBABURA' },
-  { codigo: 11, nombre: 'LOJA' },
-  { codigo: 12, nombre: 'LOS RIOS' },
-  { codigo: 13, nombre: 'MANABI' },
-  { codigo: 14, nombre: 'MORONA SANTIAGO' },
-  { codigo: 15, nombre: 'NAPO' },
-  { codigo: 16, nombre: 'PASTAZA' },
-  { codigo: 17, nombre: 'PICHINCHA' },
-  { codigo: 18, nombre: 'TUNGURAHUA' },
-  { codigo: 19, nombre: 'ZAMORA CHINCHIPE' },
-  { codigo: 20, nombre: 'GALAPAGOS' },
-  { codigo: 21, nombre: 'SUCUMBIOS' },
-  { codigo: 22, nombre: 'ORELLANA' },
+  
 ];
 
 export const ProvinciasForm = () => {
@@ -49,11 +31,15 @@ export const ProvinciasForm = () => {
     <div className="p-4">
       <div className="grid p-2 mb-4 text-left"> 
         <h1 className="text-2xl font-bold">Provincias</h1>
+        {/* Se llama a los botones pero no pongan título. Además, se debe poner onSearch: setSearchTerm -> esto es para que la barra de búsqueda funcione, para que al momento de escribir
+        detecte la palabra y aparezca */}
         {botones({ titulo: "", onSearch: setSearchTerm })}
       </div>
-      
+      <div className="mt-4 p-4 border rounded-lg shadow-md">      
         {/* Llamamos a la clase tabla para usar el formato de tablas */}
+        { /* Se pasa los campos y los datos filtrados a la tabla */}
           <Tablas campos={campos} datos={filteredProvincias} />
+    </div>
     </div>
   );
 };
