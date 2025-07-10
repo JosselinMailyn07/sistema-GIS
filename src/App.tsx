@@ -5,44 +5,15 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/login";
-import Registro from "./pages/registro";
 import { AdminLayout } from "./components/layout/AdminLayout";
-
-import { AdminReports } from "./components/admin/ventas/reports/AdminReports";
-import { Factura } from "./components/admin/ventas/factura/factura";
-import { NotasEntrega } from "./components/admin/ventas/notas-entrega/notas-entrega";
-import { Toast } from "@/components/ui/toast";
-import { Pedidos } from "./components/admin/ventas/pedidos/pedidos";
-import { Cotizaciones } from "./components/admin/ventas/cotizaciones/cotizaciones";
-import { Clientes } from "./components/admin/ventas/clientes/clientes";
-import { Cobranzas } from "./components/admin/ventas/cobranzas/cobranzas";
-import { MovimientosClientes } from "./components/admin/ventas/movimientos-clientes/movimientos-clientes";
-import { RutasVisitas } from "./components/admin/ventas/rutas-visitas/rutas-visitas";
-import { MantenimientoRutas } from "./components/admin/ventas/mantenimiento-rutas/mantenimiento-rutas";
-import { EstimadoVentas } from "./components/admin/ventas/estimado-ventas/estimado-ventas";
-import { CausaNoVentas } from "./components/admin/ventas/causa-no-ventas/causa-no-ventas";
-import { GruposClientes } from "./components/admin/ventas/grupos-clientes/grupos-clientes";
-import { Compras } from "./components/admin/compras/compras/compras";
-import { Recepciones } from "./components/admin/compras/recepciones/recepciones";
-import { OrdenesCompra } from "./components/admin/compras/ordenes-compra/ordenes-compra";
-import { Requisiciones } from "./components/admin/compras/requisiciones/requisiciones";
-import { RegistroProductos } from "./components/admin/compras/registro-productos/registro-productos";
-import { AjustesPrecios } from "./components/admin/compras/ajustes-precios/ajustes-precios";
-import { Proveedores } from "./components/admin/compras/proveedores/proveedores";
-import { Pagos } from "./components/admin/compras/pagos/pagos";
-import { MovimientosProveedores } from "./components/admin/compras/movimientos-proveedores/movimientos-proveedores";
-import { GruposProveedores } from "./components/admin/compras/grupos-proveedores/grupos-proveedores";
-import { InventarioMain } from "./components/admin/inventario/inventarioMain";
-
-import { Tesoreria } from "./components/admin/tesoreria/tesoreriaTabs";
-import { ConfiguracionSubHeader } from "./components/admin/configuracion/ConfiguracionTabs";
 import { AdminReports } from "./components/admin/pruebas/reports/AdminReports";
 import { Factura } from "./components/admin/pruebas/factura/factura";
 
-import { RecepcionesBodegas } from "./components/admin/inventario/recepciones-bodegas/recepciones-bodega";
+import { InventarioMain } from "./components/admin/inventario/inventarioMain";
+
 
 import { Tesoreria } from "./components/admin/tesoreria/tesoreriaTabs";
-import { ConfiguracionSubHeader } from "./components/admin/configuracion/ConfiguracionSubheader";
+import { ConfiguracionSubHeader } from "./components/admin/configuracion/ConfiguracionTabs";
 import { Ventas } from "./components/admin/ventas/ventasTabs";
 import { Compras } from "./components/admin/compras/comprasTabs";
 const queryClient = new QueryClient();
@@ -60,7 +31,6 @@ const App = () => (
 
           {/* Login Route */}
           <Route path="/login" element={<Login />} />
-          <Route path="/registro" element={<Registro />} />
 
 
           {/* Admin Routes */}
@@ -95,7 +65,7 @@ const App = () => (
 
 
             {/* Rutas de inventario */}
-            <Route path="inventario" element={<InventarioMain />} />
+            <Route path="inventario" element={<InventarioMain/>} />
 
             
 

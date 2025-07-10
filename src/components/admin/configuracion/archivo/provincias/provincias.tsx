@@ -9,25 +9,7 @@ const provincias = [
   { codigo: 1, nombre: 'AZUAY' },
   { codigo: 2, nombre: 'BOLIVAR' },
   { codigo: 3, nombre: 'CAÑAR' },
-  { codigo: 4, nombre: 'CARCHI' },
-  { codigo: 5, nombre: 'COTOPAXI' },
-  { codigo: 6, nombre: 'CHIMBORAZO' },
-  { codigo: 7, nombre: 'EL ORO' },
-  { codigo: 8, nombre: 'ESMERALDAS' },
-  { codigo: 9, nombre: 'GUAYAS' },
-  { codigo: 10, nombre: 'IMBABURA' },
-  { codigo: 11, nombre: 'LOJA' },
-  { codigo: 12, nombre: 'LOS RIOS' },
-  { codigo: 13, nombre: 'MANABI' },
-  { codigo: 14, nombre: 'MORONA SANTIAGO' },
-  { codigo: 15, nombre: 'NAPO' },
-  { codigo: 16, nombre: 'PASTAZA' },
-  { codigo: 17, nombre: 'PICHINCHA' },
-  { codigo: 18, nombre: 'TUNGURAHUA' },
-  { codigo: 19, nombre: 'ZAMORA CHINCHIPE' },
-  { codigo: 20, nombre: 'GALAPAGOS' },
-  { codigo: 21, nombre: 'SUCUMBIOS' },
-  { codigo: 22, nombre: 'ORELLANA' },
+  
 ];
 
 export const ProvinciasForm = () => {
