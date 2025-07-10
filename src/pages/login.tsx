@@ -1,12 +1,19 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  Autocomplete,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCompany, setSelectedCompany] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
 
   const companies = [
     "GAETANA",
@@ -19,108 +26,156 @@ const Login = () => {
     "BAR 2",
     "VELEZ PARRALES LUIS FRANCISCO (CDME)",
     "COMEL",
-    "MAURO"
+    "MAURO",
   ];
 
-  const filteredCompanies = companies.filter(company =>
-    company.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const handleCompanySelect = (company) => {
-    setSelectedCompany(company);
-    setSearchTerm(company);
-    setIsOpen(false);
-  };
-
-  const handleClickOutside = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-      setIsOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent) => {
+    // Logina de inicio de sesion (peticion a la API)
     event.preventDefault();
-    console.log('Username:', username);
-    console.log('Password:', password);
-    console.log('Selected Company:', selectedCompany);
+    console.log("Username:", username);
+    console.log("Password:", password);
+    console.log("Selected Company:", selectedCompany);
   };
 
   return (
-    <div className="max-w-md mx-auto p-5 m-10 border border-gray-300 rounded-lg shadow-lg bg-card">
-      <div className="text-center mb-5">
-        <h1 className="text-foreground">Sistema de Gestión Empresarial</h1>
-        <h2 className="text-muted-foreground">ERP para PyMES</h2>
-      </div>
-      <div className="text-center mb-5">
-        <h1 className="text-4xl text-primary">Gis</h1>
-        <p className="text-primary">Advanced Business</p>
-      </div>
-      <form onSubmit={handleSubmit} className="flex flex-col">
-        <div className="mb-4 relative" ref={dropdownRef}>
-          <label htmlFor="company" className="block text-sm font-bold mb-2 text-foreground">Empresa:</label>
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-              setIsOpen(true);
-            }}
-            onFocus={() => setIsOpen(true)}
-            placeholder="Buscar empresa..."
-            className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground"
-          />
-          {isOpen && (
-            <ul className="absolute z-10 w-full mt-1 bg-background border border-input rounded-md shadow-lg max-h-60 overflow-auto">
-              {filteredCompanies.map((company, index) => (
-                <li
-                  key={index}
-                  onClick={() => handleCompanySelect(company)}
-                  className="px-3 py-2 cursor-pointer hover:bg-gray-200"
+    <Box className="max-w-md mx-auto p-5 m-10">
+      <Card elevation={5} className="shadow-lg bg-card rounded-lg">
+        <CardContent className="p-5">
+          <Box className="text-center mb-5">
+            <Typography variant="h5" component="h1" className="text-foreground">
+              Sistema de Gestión Empresarial
+            </Typography>
+            <Typography variant="subtitle1" className="text-muted-foreground">
+              ERP para PyMES
+            </Typography>
+          </Box>
+          <Box className="text-center mb-5">
+            <Typography variant="h3" className="text-primary">
+              Gis
+            </Typography>
+            <Typography className="text-primary">Advanced Business</Typography>
+          </Box>
+          <form onSubmit={handleSubmit}>
+            <Box className="flex flex-col gap-4">
+              <Autocomplete
+                options={companies}
+                value={selectedCompany}
+                onChange={(event, newValue) => {
+                  setSelectedCompany(newValue);
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Empresa"
+                    variant="outlined"
+                    className="bg-background"
+                    slotProps={{
+                      inputLabel: {
+                        className: "text-foreground",
+                      },
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": { borderColor: "hsl(var(--border))" },
+                        "&:hover fieldset": { borderColor: "hsl(var(--ring))" },
+                      },
+                      "& .MuiInputBase-input": {
+                        color: "hsl(var(--foreground))",
+                      },
+                    }}
+                  />
+                )}
+                className="bg-background rounded-md"
+              />
+              <TextField
+                label="Usuario"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                variant="outlined"
+                fullWidth
+                slotProps={{
+                  inputLabel: {
+                    className: "text-foreground",
+                  },
+                }}
+                className="bg-background rounded-md"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": { borderColor: "hsl(var(--border))" },
+                    "&:hover fieldset": { borderColor: "hsl(var(--ring))" },
+                  },
+                  "& .MuiInputBase-input": { color: "hsl(var(--foreground))" },
+                }}
+              />
+              <TextField
+                label="Contraseña"
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                variant="outlined"
+                fullWidth
+                slotProps={{
+                  inputLabel: {
+                    className: "text-foreground",
+                  },
+                }}
+                className="bg-background rounded-md"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": { borderColor: "hsl(var(--border))" },
+                    "&:hover fieldset": { borderColor: "hsl(var(--ring))" },
+                  },
+                  "& .MuiInputBase-input": { color: "hsl(var(--foreground))" },
+                }}
+              />
+              <Box className="flex flex-col items-center mt-2">
+                <Button
+                  type="submit"
+                  variant="contained"
+                  fullWidth
+                  sx={{
+                    Classname: "bg-primary",
+                    color: "hsl(0, 0.00%, 100%)",
+                    "&:hover": {
+                      color: "hsl(0, 0.00%, 100.00%)",
+                      backgroundColor: "hsl(204, 100.00%, 50.00%)",
+                    },
+                  }}
                 >
-                  {company}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="username" className="block text-sm font-bold mb-2 text-foreground">Usuario:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-sm font-bold mb-2 text-foreground">Contraseña:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground"
-          />
-        </div>
-        <div className="flex justify-between">
-          <button type="submit" className="px-4 py-2 bg-success text-success-foreground rounded-md">Aceptar</button>
-          <button type="button" className="px-4 py-2 bg-destructive text-destructive-foreground rounded-md">Cancelar</button>
-        </div>
-      </form>
-      <div className="mt-5 text-center text-muted-foreground text-xs">
-        <p>GRUPO INFORMATICO</p>
-        <p>Derechos Reservados 2007 - 2013</p>
-        <p>V. 2.0</p>
-      </div>
-    </div>
+                  Iniciar Sesión
+                </Button>
+                <Typography
+                  variant="body2"
+                  marginTop={3}
+                  className="text-muted-foreground"
+                >
+                  ¿No tienes cuenta?{" "}
+                  <Link
+                    to="/registro"
+                    className="text-primary hover:underline font-semibold"
+                  >
+                    Regístrate
+                  </Link>
+                </Typography>
+              </Box>
+            </Box>
+          </form>
+          <Box className="mt-5 text-center text-muted-foreground text-xs">
+            <Typography variant="caption" component="p">
+              GRUPO INFORMATICO
+            </Typography>
+            <Typography variant="caption" component="p">
+              Derechos Reservados 2007 - 2013
+            </Typography>
+            <Typography variant="caption" component="p">
+              V. 2.0
+            </Typography>
+          </Box>
+        </CardContent>
+      </Card>
+    </Box>
   );
 };
 

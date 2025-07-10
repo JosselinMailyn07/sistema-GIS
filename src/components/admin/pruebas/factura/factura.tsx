@@ -1,4 +1,4 @@
-import { VentasSubHeader } from '@/components/admin/ventas/ventasSubHeader';
+import { VentasSubHeader } from '@/components/admin/pruebas/ventasSubHeader';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';

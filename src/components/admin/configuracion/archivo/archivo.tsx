@@ -1,4 +1,4 @@
-import { ConfiguracionSubHeader } from '../ConfiguracionSubheader'
+import { ConfiguracionSubHeader } from '../ConfiguracionTabs'
 
 // Archivo.tsx
 // Este componente representa la seccióon de configuración del archivo en el módulo de administración.
