@@ -17,14 +17,25 @@ export const Tesoreria = () => {
     ];
     const datos = [
         { id: 1, nombre: "Juan", edad: 28, correo: "hola@example.com" },
-        { id: 2, nombre: "Juan", edad: 28, correo: "hola@example.com" },
-        { id: 3, nombre: "Juan", edad: 28, correo: "hola@ejemplo.com" }
+        { id: 2, nombre: "Byron", edad: 28, correo: "hola@example.com" },
+        { id: 3, nombre: "Ana", edad: 28, correo: "hola@ejemplo.com" }
     ];
 
-    const [value, setValue] = useState('1');
-    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-        setValue(newValue)
+
+    // Estado para las pestañas
+    const [value, setActiveTab] = useState('1');
+    const [activeSubTab, setActiveSubTab] = useState('1-1');
+    const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
+        setActiveTab(newValue);
+        setActiveSubTab(`${newValue}-1`);
     };
+    const handleSubTabChange = (event: React.SyntheticEvent, newValue: string) => {
+        setActiveSubTab(newValue);
+    };
+
+
+
+    // Implementación de búsqueda
     const [searchTerm, setSearchTerm] = useState('');
     const filteredBancos = datos.filter(datos =>
         datos.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -35,10 +46,17 @@ export const Tesoreria = () => {
     return (
         <Box >
             <TabContext value={value}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <TabList aria-label='example' onChange={handleChange}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider', overflowX: 'auto' }}>
+                    <TabList aria-label='' variant="scrollable" scrollButtons="auto" onChange={handleTabChange} >
                         <Tab icon={<Landmark />} label="Bancos" value='1' />
                         <Tab icon={<LibraryBooksIcon />} label="Chequeras" value='2' />
+                        <Tab icon={<Landmark />} label="Movimientos Bancarios" value='3' />
+                        <Tab icon={<LibraryBooksIcon />} label="Conciliaciones Bancarias" value='4' />
+                        <Tab icon={<Landmark />} label="Movimientos de Caja Principal" value='5' />
+                        <Tab icon={<LibraryBooksIcon />} label="Depositos" value='6' />
+                        <Tab icon={<Landmark />} label="Ediciones de Caja" value='7' />
+                        <Tab icon={<LibraryBooksIcon />} label="Apertura de Cajas" value='8' />
+                        <Tab icon={<Landmark />} label="Cierre de Cajas" value='9' />
                     </TabList>
                 </Box>
                 <TabPanel value='1'>
@@ -48,7 +66,7 @@ export const Tesoreria = () => {
 
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
-                            <Tablas campos={campos} datos={datos} />
+                            <Tablas campos={campos} datos={filteredBancos} />
                         </div>
                     </div>
                 </TabPanel>
@@ -56,6 +74,107 @@ export const Tesoreria = () => {
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
                             {botones({ titulo: "Chequeras", onSearch: setSearchTerm })}
+                        </div>
+                        <div className='col-span-2 p-5 border rounded shadow-xl'>
+                            <Tablas campos={campos} datos={datos} />
+                        </div>
+                    </div>
+                </TabPanel>
+                <TabPanel value='3'>
+                    <div className="grid grid-cols-2 gap-4 p-4">
+                        <div>
+                            {botones({ titulo: "Movimientos Bancarios", onSearch: setSearchTerm })}
+                        </div>
+                        <div className='col-span-2 p-5 border rounded shadow-xl'>
+                            <Tablas campos={campos} datos={datos} />
+                        </div>
+                    </div>
+                </TabPanel>
+                <TabPanel value='4'>
+                    <div className="grid grid-cols-2 gap-4 p-4">
+                        <div>
+                            {botones({ titulo: "Conciliaciones Bancarias", onSearch: setSearchTerm })}
+                        </div>
+                        <div className='col-span-2 p-5 border rounded shadow-xl'>
+                            <Tablas campos={campos} datos={datos} />
+                        </div>
+                    </div>
+                </TabPanel>
+                <TabPanel value='5'>
+                    <div className="grid grid-cols-2 gap-4 p-4">
+                        <div>
+                            {botones({ titulo: "Movimientos de Caja Principal", onSearch: setSearchTerm })}
+                        </div>
+                        <div className='col-span-2 p-5 border rounded shadow-xl'>
+                            <Tablas campos={campos} datos={datos} />
+                        </div>
+                    </div>
+                </TabPanel>
+                <TabPanel value='6'>
+                    <div className="grid grid-cols-2 gap-4 p-4">
+                        <div>
+                            {botones({ titulo: "Depositos", onSearch: setSearchTerm })}
+                        </div>
+                        <div className='col-span-2 p-5 border rounded shadow-xl'>
+                            <Tablas campos={campos} datos={datos} />
+                        </div>
+                    </div>
+                </TabPanel>
+                <TabPanel value='7'>
+                    <TabContext value={activeSubTab}>
+                        <Box sx={{ borderBottom: 1, borderColor: 'divider', overflowX: 'auto' }}>
+                            <TabList onChange={handleSubTabChange} >
+                                <Tab icon={<LibraryBooksIcon />} label="Cajas" value='7-1' />
+                                <Tab icon={<Landmark />} label="Cajeros" value='7-2' />
+                                <Tab icon={<Landmark />} label="Turnos" value='7-3' />
+                            </TabList>
+                        </Box>
+                        <TabPanel value='7-1'>
+                            <div className="grid grid-cols-2 gap-4 p-4">
+                                <div>
+                                    {botones({ titulo: "Cajas", onSearch: setSearchTerm })}
+                                </div>
+                                <div className='col-span-2 p-5 border rounded shadow-xl'>
+                                    <Tablas campos={campos} datos={datos} />
+                                </div>
+                            </div>
+                        </TabPanel>
+                        <TabPanel value='7-2'>
+                            <div className="grid grid-cols-2 gap-4 p-4">
+                                <div>
+                                    {botones({ titulo: "Cajeros", onSearch: setSearchTerm })}
+                                </div>
+                                <div className='col-span-2 p-5 border rounded shadow-xl'>
+                                    <Tablas campos={campos} datos={datos} />
+                                </div>
+                            </div>
+                        </TabPanel>
+                        <TabPanel value='7-3'>
+                            <div className="grid grid-cols-2 gap-4 p-4">
+                                <div>
+                                    {botones({ titulo: "Turnos", onSearch: setSearchTerm })}
+                                </div>
+                                <div className='col-span-2 p-5 border rounded shadow-xl'>
+                                    <Tablas campos={campos} datos={datos} />
+                                </div>
+                            </div>
+                        </TabPanel>
+                    </TabContext>
+                </TabPanel>
+                <TabPanel value='8'>
+                    <div className="grid grid-cols-2 gap-4 p-4">
+                        <div>
+                            {botones({ titulo: "Apertura de Cajas", onSearch: setSearchTerm })}
+                        </div>
+                        <div className='col-span-2 p-5 border rounded shadow-xl'>
+                            <Tablas campos={campos} datos={datos} />
+                        </div>
+                    </div>
+                </TabPanel>
+                <TabPanel value='9'>
+                    <div className="grid grid-cols-2 gap-4 p-4">
+                        <div>
+                            {botones({ titulo: "Cierres de Cajas", onSearch: setSearchTerm })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={campos} datos={datos} />

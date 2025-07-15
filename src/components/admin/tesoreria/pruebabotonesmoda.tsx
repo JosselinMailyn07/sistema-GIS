@@ -5,7 +5,7 @@ import { Modal } from '../../layout/modal';
 interface Titulo {
     titulo: string;
 }
- 
+
 
 
 export const BotonesPrueba = ({ titulo = "" }: Titulo) => {

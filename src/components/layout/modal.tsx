@@ -16,8 +16,8 @@ export const Modal = ({ onClose, ...PropiedadesInput }: ModalProps) => {
                 </div>
                 <div className='grid grid-cols-2 gap-4 p-4'>
                     <div>
-                        <label htmlFor="">a</label>
-                        <Inputs placeholder="id" />
+                        <label htmlFor="">Nombre</label>
+                        <Inputs placeholder="id" type='text'/>
                     </div>
                     <div>
                         <label htmlFor="a">a</label>
