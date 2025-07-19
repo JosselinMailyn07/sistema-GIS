@@ -2,12 +2,649 @@ import { Box, Tab } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import React, { useState } from 'react';
 import { Tablas } from '@/components/layout/Tabla';
-import { botones } from '../../layout/botones';
+import { botones } from '../ventas/botonesVentas';
 import { Landmark } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { FaSave } from "react-icons/fa";
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
 
 export const Ventas = () => {
+
+    // Estado para el formulario de nuevo registro
+    const [nuevoFactura, setNuevoFactura] = useState({
+        id: "",
+        bodega: "",
+        descripcion: "",
+        unidad: "",
+        iva: "",
+        bulto: "",
+        cantidad: "",
+        precio: "",
+        descuento: "",
+        total: ""
+    });
+
+    const handleChangeFactura = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setNuevoFactura({ ...nuevoFactura, [e.target.name]: e.target.value });
+    };
+
+    const formularioNuevoFactura = (
+        <form className="grid grid-cols-2 gap-4 p-4">
+            <div>
+                <label>ID</label>
+                <input name="id" value={nuevoFactura.id} onChange={handleChangeFactura} className="border rounded px-2 py-1 w-full" />
+            </div>
+            <div>
+                <label>Bodega</label>
+                <input name="bodega" value={nuevoFactura.bodega} onChange={handleChangeFactura} className="border rounded px-2 py-1 w-full" />
+            </div>
+            <div>
+                <label>Descripción</label>
+                <input name="descripcion" value={nuevoFactura.descripcion} onChange={handleChangeFactura} className="border rounded px-2 py-1 w-full" />
+            </div>
+            <div>
+                <label>Unidad</label>
+                <input name="unidad" value={nuevoFactura.unidad} onChange={handleChangeFactura} className="border rounded px-2 py-1 w-full" />
+            </div>
+            <div>
+                <label>IVA</label>
+                <input name="iva" value={nuevoFactura.iva} onChange={handleChangeFactura} className="border rounded px-2 py-1 w-full" />
+            </div>
+            <div>
+                <label>Bulto</label>
+                <input name="bulto" value={nuevoFactura.bulto} onChange={handleChangeFactura} className="border rounded px-2 py-1 w-full" />
+            </div>
+            <div>
+                <label>Cantidad</label>
+                <input name="cantidad" value={nuevoFactura.cantidad} onChange={handleChangeFactura} className="border rounded px-2 py-1 w-full" />
+            </div>
+            <div>
+                <label>Precio</label>
+                <input name="precio" value={nuevoFactura.precio} onChange={handleChangeFactura} className="border rounded px-2 py-1 w-full" />
+            </div>
+            <div>
+                <label>Descuento</label>
+                <input name="descuento" value={nuevoFactura.descuento} onChange={handleChangeFactura} className="border rounded px-2 py-1 w-full" />
+            </div>
+            <div>
+                <label>Total</label>
+                <input name="total" value={nuevoFactura.total} onChange={handleChangeFactura} className="border rounded px-2 py-1 w-full" />
+            </div>
+            <div className="col-span-2 flex justify-end gap-2 mt-4">
+                  <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+               </Button>
+            </div>
+            </form>
+            );
+            
+
+    // ...existing code...
+
+// Estado para el formulario de nueva nota de entrega
+const [nuevaNotaEntrega, setNuevaNotaEntrega] = useState({
+    id: "",
+    bodega: "",
+    descripcion: "",
+    unidad: "",
+    iva: "",
+    bulto: "",
+    cantidad: "",
+    entregado: "",
+    precio: "",
+    descuento: "",
+    total: ""
+});
+
+const handleChangeNotaEntrega = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevaNotaEntrega({ ...nuevaNotaEntrega, [e.target.name]: e.target.value });
+};
+
+const formularioNuevaNotaEntrega = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevaNotaEntrega.id} onChange={handleChangeNotaEntrega} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bodega</label>
+            <input name="bodega" value={nuevaNotaEntrega.bodega} onChange={handleChangeNotaEntrega} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descripción</label>
+            <input name="descripcion" value={nuevaNotaEntrega.descripcion} onChange={handleChangeNotaEntrega} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Unidad</label>
+            <input name="unidad" value={nuevaNotaEntrega.unidad} onChange={handleChangeNotaEntrega} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>IVA</label>
+            <input name="iva" value={nuevaNotaEntrega.iva} onChange={handleChangeNotaEntrega} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bulto</label>
+            <input name="bulto" value={nuevaNotaEntrega.bulto} onChange={handleChangeNotaEntrega} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Cantidad</label>
+            <input name="cantidad" value={nuevaNotaEntrega.cantidad} onChange={handleChangeNotaEntrega} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Entregado</label>
+            <input name="entregado" value={nuevaNotaEntrega.entregado} onChange={handleChangeNotaEntrega} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Precio</label>
+            <input name="precio" value={nuevaNotaEntrega.precio} onChange={handleChangeNotaEntrega} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descuento</label>
+            <input name="descuento" value={nuevaNotaEntrega.descuento} onChange={handleChangeNotaEntrega} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Total</label>
+            <input name="total" value={nuevaNotaEntrega.total} onChange={handleChangeNotaEntrega} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de nuevo pedido
+const [nuevoPedido, setNuevoPedido] = useState({
+    id: "",
+    bodega: "",
+    descripcion: "",
+    unidad: "",
+    iva: "",
+    bulto: "",
+    cantidad: "",
+    precio: "",
+    descuento: "",
+    total: ""
+});
+
+const handleChangePedido = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevoPedido({ ...nuevoPedido, [e.target.name]: e.target.value });
+};
+
+const formularioNuevoPedido = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevoPedido.id} onChange={handleChangePedido} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bodega</label>
+            <input name="bodega" value={nuevoPedido.bodega} onChange={handleChangePedido} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descripción</label>
+            <input name="descripcion" value={nuevoPedido.descripcion} onChange={handleChangePedido} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Unidad</label>
+            <input name="unidad" value={nuevoPedido.unidad} onChange={handleChangePedido} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>IVA</label>
+            <input name="iva" value={nuevoPedido.iva} onChange={handleChangePedido} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bulto</label>
+            <input name="bulto" value={nuevoPedido.bulto} onChange={handleChangePedido} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Cantidad</label>
+            <input name="cantidad" value={nuevoPedido.cantidad} onChange={handleChangePedido} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Precio</label>
+            <input name="precio" value={nuevoPedido.precio} onChange={handleChangePedido} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descuento</label>
+            <input name="descuento" value={nuevoPedido.descuento} onChange={handleChangePedido} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Total</label>
+            <input name="total" value={nuevoPedido.total} onChange={handleChangePedido} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+
+// Estado para el formulario de nueva cotización
+const [nuevaCotizacion, setNuevaCotizacion] = useState({
+    id: "",
+    bodega: "",
+    descripcion: "",
+    unidad: "",
+    iva: "",
+    bulto: "",
+    cantidad: "",
+    precio: "",
+    descuento: "",
+    total: ""
+});
+
+const handleChangeCotizacion = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevaCotizacion({ ...nuevaCotizacion, [e.target.name]: e.target.value });
+};
+
+const formularioNuevaCotizacion = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevaCotizacion.id} onChange={handleChangeCotizacion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bodega</label>
+            <input name="bodega" value={nuevaCotizacion.bodega} onChange={handleChangeCotizacion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descripción</label>
+            <input name="descripcion" value={nuevaCotizacion.descripcion} onChange={handleChangeCotizacion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Unidad</label>
+            <input name="unidad" value={nuevaCotizacion.unidad} onChange={handleChangeCotizacion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>IVA</label>
+            <input name="iva" value={nuevaCotizacion.iva} onChange={handleChangeCotizacion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bulto</label>
+            <input name="bulto" value={nuevaCotizacion.bulto} onChange={handleChangeCotizacion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Cantidad</label>
+            <input name="cantidad" value={nuevaCotizacion.cantidad} onChange={handleChangeCotizacion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Precio</label>
+            <input name="precio" value={nuevaCotizacion.precio} onChange={handleChangeCotizacion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descuento</label>
+            <input name="descuento" value={nuevaCotizacion.descuento} onChange={handleChangeCotizacion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Total</label>
+            <input name="total" value={nuevaCotizacion.total} onChange={handleChangeCotizacion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de nuevo cliente
+const [nuevoCliente, setNuevoCliente] = useState({
+    id: "",
+    nombre: "",
+    edad: "",
+    correo: ""
+});
+
+const handleChangeCliente = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevoCliente({ ...nuevoCliente, [e.target.name]: e.target.value });
+};
+
+const formularioNuevoCliente = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevoCliente.id} onChange={handleChangeCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Nombre</label>
+            <input name="nombre" value={nuevoCliente.nombre} onChange={handleChangeCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Edad</label>
+            <input name="edad" value={nuevoCliente.edad} onChange={handleChangeCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Correo</label>
+            <input name="correo" value={nuevoCliente.correo} onChange={handleChangeCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de nueva cobranza
+const [nuevaCobranza, setNuevaCobranza] = useState({
+    id: "",
+    nombre: "",
+    edad: "",
+    correo: ""
+});
+
+const handleChangeCobranza = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevaCobranza({ ...nuevaCobranza, [e.target.name]: e.target.value });
+};
+
+const formularioNuevaCobranza = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevaCobranza.id} onChange={handleChangeCobranza} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Nombre</label>
+            <input name="nombre" value={nuevaCobranza.nombre} onChange={handleChangeCobranza} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Edad</label>
+            <input name="edad" value={nuevaCobranza.edad} onChange={handleChangeCobranza} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Correo</label>
+            <input name="correo" value={nuevaCobranza.correo} onChange={handleChangeCobranza} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de nuevo movimiento de cliente
+const [nuevoMovimientoCliente, setNuevoMovimientoCliente] = useState({
+    id: "",
+    tipo: "",
+    numero: "",
+    emision: "",
+    vencimiento: "",
+    comprobante: "",
+    valor: "",
+    origen: "",
+    documento: "",
+    concepto: "",
+    norigen: ""
+});
+
+const handleChangeMovimientoCliente = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevoMovimientoCliente({ ...nuevoMovimientoCliente, [e.target.name]: e.target.value });
+};
+
+const formularioNuevoMovimientoCliente = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>Código Cliente</label>
+            <input name="id" value={nuevoMovimientoCliente.id} onChange={handleChangeMovimientoCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Tipo</label>
+            <input name="tipo" value={nuevoMovimientoCliente.tipo} onChange={handleChangeMovimientoCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Número</label>
+            <input name="numero" value={nuevoMovimientoCliente.numero} onChange={handleChangeMovimientoCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Emisión</label>
+            <input type="date" name="emision" value={nuevoMovimientoCliente.emision} onChange={handleChangeMovimientoCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Vencimiento</label>
+            <input type="date" name="vencimiento" value={nuevoMovimientoCliente.vencimiento} onChange={handleChangeMovimientoCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Comprobante</label>
+            <input name="comprobante" value={nuevoMovimientoCliente.comprobante} onChange={handleChangeMovimientoCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Valor</label>
+            <input name="valor" value={nuevoMovimientoCliente.valor} onChange={handleChangeMovimientoCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Origen</label>
+            <input name="origen" value={nuevoMovimientoCliente.origen} onChange={handleChangeMovimientoCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Ref. Documento</label>
+            <input name="documento" value={nuevoMovimientoCliente.documento} onChange={handleChangeMovimientoCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Concepto</label>
+            <input name="concepto" value={nuevoMovimientoCliente.concepto} onChange={handleChangeMovimientoCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Número de Origen</label>
+            <input name="norigen" value={nuevoMovimientoCliente.norigen} onChange={handleChangeMovimientoCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+const [nuevaRutaVisita, setNuevaRutaVisita] = useState({
+    id: "",
+    nombre: "",
+    edad: "",
+    correo: ""
+});
+
+const handleChangeRutaVisita = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevaRutaVisita({ ...nuevaRutaVisita, [e.target.name]: e.target.value });
+};
+const formularioNuevaRutaVisita = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevaRutaVisita.id} onChange={handleChangeRutaVisita} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Nombre</label>
+            <input name="nombre" value={nuevaRutaVisita.nombre} onChange={handleChangeRutaVisita} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Edad</label>
+            <input name="edad" value={nuevaRutaVisita.edad} onChange={handleChangeRutaVisita} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Correo</label>
+            <input name="correo" value={nuevaRutaVisita.correo} onChange={handleChangeRutaVisita} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de mantenimiento de rutas
+const [nuevoMantenimientoRuta, setNuevoMantenimientoRuta] = useState({
+    id: "",
+    nombre: "",
+    edad: "",
+    correo: ""
+});
+
+const handleChangeMantenimientoRuta = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevoMantenimientoRuta({ ...nuevoMantenimientoRuta, [e.target.name]: e.target.value });
+};
+
+const formularioNuevoMantenimientoRuta = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevoMantenimientoRuta.id} onChange={handleChangeMantenimientoRuta} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Nombre</label>
+            <input name="nombre" value={nuevoMantenimientoRuta.nombre} onChange={handleChangeMantenimientoRuta} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Edad</label>
+            <input name="edad" value={nuevoMantenimientoRuta.edad} onChange={handleChangeMantenimientoRuta} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Correo</label>
+            <input name="correo" value={nuevoMantenimientoRuta.correo} onChange={handleChangeMantenimientoRuta} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de estimado de ventas
+const [nuevoEstimadoVentas, setNuevoEstimadoVentas] = useState({
+    vendedor: "",
+    nombre: ""
+});
+
+const handleChangeEstimadoVentas = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevoEstimadoVentas({ ...nuevoEstimadoVentas, [e.target.name]: e.target.value });
+};
+
+const formularioNuevoEstimadoVentas = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>Vendedor</label>
+            <input name="vendedor" value={nuevoEstimadoVentas.vendedor} onChange={handleChangeEstimadoVentas} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Nombre</label>
+            <input name="nombre" value={nuevoEstimadoVentas.nombre} onChange={handleChangeEstimadoVentas} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de causa no ventas
+const [nuevaCausaNoVenta, setNuevaCausaNoVenta] = useState({
+    id: "",
+    nombre: "",
+    edad: "",
+    correo: ""
+});
+
+const handleChangeCausaNoVenta = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevaCausaNoVenta({ ...nuevaCausaNoVenta, [e.target.name]: e.target.value });
+};
+
+const formularioNuevaCausaNoVenta = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevaCausaNoVenta.id} onChange={handleChangeCausaNoVenta} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Nombre</label>
+            <input name="nombre" value={nuevaCausaNoVenta.nombre} onChange={handleChangeCausaNoVenta} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Edad</label>
+            <input name="edad" value={nuevaCausaNoVenta.edad} onChange={handleChangeCausaNoVenta} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Correo</label>
+            <input name="correo" value={nuevaCausaNoVenta.correo} onChange={handleChangeCausaNoVenta} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de grupo de clientes
+const [nuevoGrupoCliente, setNuevoGrupoCliente] = useState({
+    id: "",
+    nombre: ""
+});
+
+const handleChangeGrupoCliente = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevoGrupoCliente({ ...nuevoGrupoCliente, [e.target.name]: e.target.value });
+};
+
+const formularioNuevoGrupoCliente = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevoGrupoCliente.id} onChange={handleChangeGrupoCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Nombre</label>
+            <input name="nombre" value={nuevoGrupoCliente.nombre} onChange={handleChangeGrupoCliente} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
     const campos = [
         { key: "radio", label: "" },
         { key: "id", label: "ID" },
@@ -163,7 +800,7 @@ export const Ventas = () => {
         <Box >
             <TabContext value={value}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <TabList aria-label='example' onChange={handleChange}>
+                    <TabList aria-label='example' onChange={handleChange} variant="scrollable" scrollButtons="auto" >
                         <Tab icon={<Landmark />} label="Facturas" value='1' />
                         <Tab icon={<LibraryBooksIcon />} label="Notas de Entrega" value='2' />
                         <Tab icon={<Landmark />} label="Pedidos" value='3' />
@@ -180,10 +817,9 @@ export const Ventas = () => {
                 </Box>
                 <TabPanel value='1'>
                     <div className="grid grid-cols-2 gap-4 p-4">
-                        <div>
-                            {botones({ titulo: "Facturas", onSearch: setSearchTerm })}
-
-                        </div>
+                    <div>
+                        {botones({ titulo: "Facturas", onSearch: setSearchTerm, formularioNuevo: formularioNuevoFactura })}
+                    </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposFactura} datos={datosFactura} />
                         </div>
@@ -192,7 +828,7 @@ export const Ventas = () => {
                 <TabPanel value='2'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Notas de Entrega", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Notas de Entrega", onSearch: setSearchTerm, formularioNuevo: formularioNuevaNotaEntrega })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposNotasEntrega} datos={datosNotasEntrega} />
@@ -202,7 +838,7 @@ export const Ventas = () => {
                 <TabPanel value='3'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Pedidos", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Pedidos", onSearch: setSearchTerm, formularioNuevo: formularioNuevoPedido })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposPedidos} datos={datosPedidos} />
@@ -212,7 +848,7 @@ export const Ventas = () => {
                 <TabPanel value='4'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Cotizaciones", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Cotizaciones", onSearch: setSearchTerm, formularioNuevo: formularioNuevaCotizacion  })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposCotizaciones} datos={datosCotizaciones} />
@@ -222,7 +858,7 @@ export const Ventas = () => {
                 <TabPanel value='5'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Clientes", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Clientes", onSearch: setSearchTerm, formularioNuevo: formularioNuevoCliente  })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={campos} datos={datos} />
@@ -232,7 +868,7 @@ export const Ventas = () => {
                 <TabPanel value='6'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Cobranzas", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Cobranzas", onSearch: setSearchTerm, formularioNuevo: formularioNuevaCobranza  })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={campos} datos={datos} />
@@ -242,7 +878,7 @@ export const Ventas = () => {
                 <TabPanel value='7'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Movimientos Clientes", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Movimientos Clientes", onSearch: setSearchTerm, formularioNuevo: formularioNuevoMovimientoCliente  })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposMovimientosClientes} datos={datosMovimientosClientes} />
@@ -252,7 +888,7 @@ export const Ventas = () => {
                 <TabPanel value='8'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Rutas Visitas", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Rutas Visitas", onSearch: setSearchTerm, formularioNuevo: formularioNuevaRutaVisita  })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={campos} datos={datos} />
@@ -262,7 +898,7 @@ export const Ventas = () => {
                 <TabPanel value='9'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Mantenimiento Rutas", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Mantenimiento Rutas", onSearch: setSearchTerm, formularioNuevo: formularioNuevoMantenimientoRuta  })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={campos} datos={datos} />
@@ -272,7 +908,7 @@ export const Ventas = () => {
                 <TabPanel value='10'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Estimado de Ventas", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Estimado de Ventas", onSearch: setSearchTerm, formularioNuevo: formularioNuevoEstimadoVentas  })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposEstimadoVentas} datos={datosEstimadoVentas} />
@@ -282,7 +918,7 @@ export const Ventas = () => {
                 <TabPanel value='11'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Causa No Ventas", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Causa No Ventas", onSearch: setSearchTerm, formularioNuevo: formularioNuevaCausaNoVenta  })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={campos} datos={datos} />
@@ -292,7 +928,7 @@ export const Ventas = () => {
                 <TabPanel value='12'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Grupos de Clientes", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Grupos de Clientes", onSearch: setSearchTerm, formularioNuevo: formularioNuevoGrupoCliente  })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposGruposClientes} datos={datosGruposClientes} />

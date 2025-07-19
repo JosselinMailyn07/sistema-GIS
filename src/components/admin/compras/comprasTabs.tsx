@@ -2,12 +2,588 @@ import { Box, Tab } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import React, { useState } from 'react';
 import { Tablas } from '@/components/layout/Tabla';
-import { botones } from '../../layout/botones';
+import { botones } from '../ventas/botonesVentas';
 import { Landmark } from 'lucide-react';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
-
+import { Button } from '@/components/ui/button';
+import { FaSave } from "react-icons/fa";
 
 export const Compras = () => {
+
+    // Estado para el formulario de nueva compra
+const [nuevaCompra, setNuevaCompra] = useState({
+    id: "",
+    bodega: "",
+    descripcion: "",
+    unidad: "",
+    iva: "",
+    bulto: "",
+    cantidad: "",
+    precio: "",
+    descuento: "",
+    total: ""
+});
+
+const handleChangeCompra = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevaCompra({ ...nuevaCompra, [e.target.name]: e.target.value });
+};
+
+const formularioNuevaCompra = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevaCompra.id} onChange={handleChangeCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bodega</label>
+            <input name="bodega" value={nuevaCompra.bodega} onChange={handleChangeCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descripción</label>
+            <input name="descripcion" value={nuevaCompra.descripcion} onChange={handleChangeCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Unidad</label>
+            <input name="unidad" value={nuevaCompra.unidad} onChange={handleChangeCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>IVA</label>
+            <input name="iva" value={nuevaCompra.iva} onChange={handleChangeCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bulto</label>
+            <input name="bulto" value={nuevaCompra.bulto} onChange={handleChangeCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Cantidad</label>
+            <input name="cantidad" value={nuevaCompra.cantidad} onChange={handleChangeCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Precio</label>
+            <input name="precio" value={nuevaCompra.precio} onChange={handleChangeCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descuento</label>
+            <input name="descuento" value={nuevaCompra.descuento} onChange={handleChangeCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Total</label>
+            <input name="total" value={nuevaCompra.total} onChange={handleChangeCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de nueva recepción
+const [nuevaRecepcion, setNuevaRecepcion] = useState({
+    id: "",
+    bodega: "",
+    descripcion: "",
+    unidad: "",
+    iva: "",
+    bulto: "",
+    cantidad: "",
+    precio: "",
+    descuento: "",
+    total: ""
+});
+
+const handleChangeRecepcion = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevaRecepcion({ ...nuevaRecepcion, [e.target.name]: e.target.value });
+};
+
+const formularioNuevaRecepcion = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevaRecepcion.id} onChange={handleChangeRecepcion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bodega</label>
+            <input name="bodega" value={nuevaRecepcion.bodega} onChange={handleChangeRecepcion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descripción</label>
+            <input name="descripcion" value={nuevaRecepcion.descripcion} onChange={handleChangeRecepcion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Unidad</label>
+            <input name="unidad" value={nuevaRecepcion.unidad} onChange={handleChangeRecepcion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>IVA</label>
+            <input name="iva" value={nuevaRecepcion.iva} onChange={handleChangeRecepcion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bulto</label>
+            <input name="bulto" value={nuevaRecepcion.bulto} onChange={handleChangeRecepcion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Cantidad</label>
+            <input name="cantidad" value={nuevaRecepcion.cantidad} onChange={handleChangeRecepcion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Precio</label>
+            <input name="precio" value={nuevaRecepcion.precio} onChange={handleChangeRecepcion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descuento</label>
+            <input name="descuento" value={nuevaRecepcion.descuento} onChange={handleChangeRecepcion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Total</label>
+            <input name="total" value={nuevaRecepcion.total} onChange={handleChangeRecepcion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de nueva orden de compra
+const [nuevaOrdenCompra, setNuevaOrdenCompra] = useState({
+    id: "",
+    bodega: "",
+    descripcion: "",
+    unidad: "",
+    iva: "",
+    bulto: "",
+    cantidad: "",
+    precio: "",
+    descuento: "",
+    total: ""
+});
+
+const handleChangeOrdenCompra = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevaOrdenCompra({ ...nuevaOrdenCompra, [e.target.name]: e.target.value });
+};
+
+const formularioNuevaOrdenCompra = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevaOrdenCompra.id} onChange={handleChangeOrdenCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bodega</label>
+            <input name="bodega" value={nuevaOrdenCompra.bodega} onChange={handleChangeOrdenCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descripción</label>
+            <input name="descripcion" value={nuevaOrdenCompra.descripcion} onChange={handleChangeOrdenCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Unidad</label>
+            <input name="unidad" value={nuevaOrdenCompra.unidad} onChange={handleChangeOrdenCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>IVA</label>
+            <input name="iva" value={nuevaOrdenCompra.iva} onChange={handleChangeOrdenCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bulto</label>
+            <input name="bulto" value={nuevaOrdenCompra.bulto} onChange={handleChangeOrdenCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Cantidad</label>
+            <input name="cantidad" value={nuevaOrdenCompra.cantidad} onChange={handleChangeOrdenCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Precio</label>
+            <input name="precio" value={nuevaOrdenCompra.precio} onChange={handleChangeOrdenCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descuento</label>
+            <input name="descuento" value={nuevaOrdenCompra.descuento} onChange={handleChangeOrdenCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Total</label>
+            <input name="total" value={nuevaOrdenCompra.total} onChange={handleChangeOrdenCompra} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de nueva requisición
+const [nuevaRequisicion, setNuevaRequisicion] = useState({
+    id: "",
+    bodega: "",
+    descripcion: "",
+    unidad: "",
+    iva: "",
+    bulto: "",
+    cantidad: "",
+    precio: "",
+    descuento: "",
+    total: ""
+});
+
+const handleChangeRequisicion = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevaRequisicion({ ...nuevaRequisicion, [e.target.name]: e.target.value });
+};
+
+const formularioNuevaRequisicion = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevaRequisicion.id} onChange={handleChangeRequisicion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bodega</label>
+            <input name="bodega" value={nuevaRequisicion.bodega} onChange={handleChangeRequisicion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descripción</label>
+            <input name="descripcion" value={nuevaRequisicion.descripcion} onChange={handleChangeRequisicion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Unidad</label>
+            <input name="unidad" value={nuevaRequisicion.unidad} onChange={handleChangeRequisicion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>IVA</label>
+            <input name="iva" value={nuevaRequisicion.iva} onChange={handleChangeRequisicion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Bulto</label>
+            <input name="bulto" value={nuevaRequisicion.bulto} onChange={handleChangeRequisicion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Cantidad</label>
+            <input name="cantidad" value={nuevaRequisicion.cantidad} onChange={handleChangeRequisicion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Precio</label>
+            <input name="precio" value={nuevaRequisicion.precio} onChange={handleChangeRequisicion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Descuento</label>
+            <input name="descuento" value={nuevaRequisicion.descuento} onChange={handleChangeRequisicion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Total</label>
+            <input name="total" value={nuevaRequisicion.total} onChange={handleChangeRequisicion} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de registro de productos
+const [nuevoProducto, setNuevoProducto] = useState({
+    id: "",
+    nombre: "",
+    unidad: "",
+    grupo: "",
+    existencias: ""
+});
+
+const handleChangeProducto = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevoProducto({ ...nuevoProducto, [e.target.name]: e.target.value });
+};
+
+const formularioNuevoProducto = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevoProducto.id} onChange={handleChangeProducto} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Nombre</label>
+            <input name="nombre" value={nuevoProducto.nombre} onChange={handleChangeProducto} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Unidad</label>
+            <input name="unidad" value={nuevoProducto.unidad} onChange={handleChangeProducto} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Grupo</label>
+            <input name="grupo" value={nuevoProducto.grupo} onChange={handleChangeProducto} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2">
+            <label>Existencias</label>
+            <input name="existencias" value={nuevoProducto.existencias} onChange={handleChangeProducto} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de ajustes de precios
+const [nuevoAjustePrecio, setNuevoAjustePrecio] = useState({
+    id: "",
+    nombre: "",
+    edad: "",
+    correo: ""
+});
+
+const handleChangeAjustePrecio = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevoAjustePrecio({ ...nuevoAjustePrecio, [e.target.name]: e.target.value });
+};
+
+const formularioNuevoAjustePrecio = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+           <div>
+               <label>ID</label>
+               <input name="id" value={nuevoAjustePrecio.id} onChange={handleChangeAjustePrecio} className="border rounded px-2 py-1 w-full" />
+           </div>
+           <div>
+               <label>Nombre</label>
+               <input name="nombre" value={nuevoAjustePrecio.nombre} onChange={handleChangeAjustePrecio} className="border rounded px-2 py-1 w-full" />
+           </div>
+           <div>
+               <label>Edad</label>
+               <input name="edad" value={nuevoAjustePrecio.edad} onChange={handleChangeAjustePrecio} className="border rounded px-2 py-1 w-full" />
+           </div>
+           <div>
+               <label>Correo</label>
+               <input name="correo" value={nuevoAjustePrecio.correo} onChange={handleChangeAjustePrecio} className="border rounded px-2 py-1 w-full" />
+           </div>
+           <div className="col-span-2 flex justify-end gap-2 mt-4">
+               <Button
+                   type="button"
+                   className="px-4 py-2 bg-success text-white rounded flex items-center"
+               >
+                   <FaSave className="mr-2" /> Guardar
+               </Button>
+           </div>
+       </form>
+);
+
+// Estado para el formulario de nuevo proveedor
+const [nuevoProveedor, setNuevoProveedor] = useState({
+    id: "",
+    nombre: "",
+    telefonos: "",
+    correo: "",
+    ruc: ""
+});
+
+const handleChangeProveedor = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevoProveedor({ ...nuevoProveedor, [e.target.name]: e.target.value });
+};
+
+const formularioNuevoProveedor = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevoProveedor.id} onChange={handleChangeProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Nombre</label>
+            <input name="nombre" value={nuevoProveedor.nombre} onChange={handleChangeProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Teléfonos</label>
+            <input name="telefonos" value={nuevoProveedor.telefonos} onChange={handleChangeProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Correo</label>
+            <input name="correo" value={nuevoProveedor.correo} onChange={handleChangeProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>RUC</label>
+            <input name="ruc" value={nuevoProveedor.ruc} onChange={handleChangeProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de nuevo pago
+const [nuevoPago, setNuevoPago] = useState({
+    numero: "",
+    tipo: "",
+    emision: "",
+    vencimiento: "",
+    referencia: "",
+    valor: "",
+    saldo: ""
+});
+
+const handleChangePago = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevoPago({ ...nuevoPago, [e.target.name]: e.target.value });
+};
+
+const formularioNuevoPago = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>Número</label>
+            <input name="numero" value={nuevoPago.numero} onChange={handleChangePago} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Tipo</label>
+            <input name="tipo" value={nuevoPago.tipo} onChange={handleChangePago} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Emisión</label>
+            <input type="date" name="emision" value={nuevoPago.emision} onChange={handleChangePago} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Vencimiento</label>
+            <input type="date" name="vencimiento" value={nuevoPago.vencimiento} onChange={handleChangePago} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Referencia</label>
+            <input name="referencia" value={nuevoPago.referencia} onChange={handleChangePago} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Valor</label>
+            <input name="valor" value={nuevoPago.valor} onChange={handleChangePago} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Saldo</label>
+            <input name="saldo" value={nuevoPago.saldo} onChange={handleChangePago} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
+// Estado para el formulario de nuevo movimiento de proveedor
+const [nuevoMovimientoProveedor, setNuevoMovimientoProveedor] = useState({
+    id: "",
+    tipo: "",
+    numero: "",
+    emision: "",
+    vencimiento: "",
+    comprobante: "",
+    valor: "",
+    origen: "",
+    documento: "",
+    concepto: ""
+});
+
+const handleChangeMovimientoProveedor = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevoMovimientoProveedor({ ...nuevoMovimientoProveedor, [e.target.name]: e.target.value });
+};
+
+const formularioNuevoMovimientoProveedor = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>Código Proveedor</label>
+            <input name="id" value={nuevoMovimientoProveedor.id} onChange={handleChangeMovimientoProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Tipo</label>
+            <input name="tipo" value={nuevoMovimientoProveedor.tipo} onChange={handleChangeMovimientoProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Número</label>
+            <input name="numero" value={nuevoMovimientoProveedor.numero} onChange={handleChangeMovimientoProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Emisión</label>
+            <input type="date" name="emision" value={nuevoMovimientoProveedor.emision} onChange={handleChangeMovimientoProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Vencimiento</label>
+            <input type="date" name="vencimiento" value={nuevoMovimientoProveedor.vencimiento} onChange={handleChangeMovimientoProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Comprobante</label>
+            <input name="comprobante" value={nuevoMovimientoProveedor.comprobante} onChange={handleChangeMovimientoProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Valor</label>
+            <input name="valor" value={nuevoMovimientoProveedor.valor} onChange={handleChangeMovimientoProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Origen</label>
+            <input name="origen" value={nuevoMovimientoProveedor.origen} onChange={handleChangeMovimientoProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Ref. Documento</label>
+            <input name="documento" value={nuevoMovimientoProveedor.documento} onChange={handleChangeMovimientoProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2">
+            <label>Concepto</label>
+            <input name="concepto" value={nuevoMovimientoProveedor.concepto} onChange={handleChangeMovimientoProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+// Estado para el formulario de grupo de proveedores
+const [nuevoGrupoProveedor, setNuevoGrupoProveedor] = useState({
+    id: "",
+    nombre: ""
+});
+
+const handleChangeGrupoProveedor = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNuevoGrupoProveedor({ ...nuevoGrupoProveedor, [e.target.name]: e.target.value });
+};
+
+const formularioNuevoGrupoProveedor = (
+    <form className="grid grid-cols-2 gap-4 p-4">
+        <div>
+            <label>ID</label>
+            <input name="id" value={nuevoGrupoProveedor.id} onChange={handleChangeGrupoProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div>
+            <label>Nombre</label>
+            <input name="nombre" value={nuevoGrupoProveedor.nombre} onChange={handleChangeGrupoProveedor} className="border rounded px-2 py-1 w-full" />
+        </div>
+        <div className="col-span-2 flex justify-end gap-2 mt-4">
+            <Button
+                type="button"
+                className="px-4 py-2 bg-success text-white rounded flex items-center"
+            >
+                <FaSave className="mr-2" /> Guardar
+            </Button>
+        </div>
+    </form>
+);
+
     const campos = [
         { key: "radio", label: "" },
         { key: "id", label: "ID" },
@@ -197,7 +773,7 @@ export const Compras = () => {
         <Box >
             <TabContext value={value}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <TabList aria-label='example' onChange={handleChange}>
+                    <TabList aria-label='example' onChange={handleChange} variant="scrollable" scrollButtons="auto">
                         <Tab icon={<Landmark />} label="Compras" value='1' />
                         <Tab icon={<LibraryBooksIcon />} label="Recepciones" value='2' />
                         <Tab icon={<Landmark />} label="Ordenes de Compra" value='3' />
@@ -213,7 +789,7 @@ export const Compras = () => {
                 <TabPanel value='1'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Compras", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Compras", onSearch: setSearchTerm, formularioNuevo: formularioNuevaCompra})}
 
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
@@ -224,7 +800,7 @@ export const Compras = () => {
                 <TabPanel value='2'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Recepciones", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Recepciones", onSearch: setSearchTerm, formularioNuevo: formularioNuevaRecepcion})}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposRecepciones} datos={datosRecepciones} />
@@ -234,7 +810,7 @@ export const Compras = () => {
                 <TabPanel value='3'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Ordenes de Compra", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Ordenes de Compra", onSearch: setSearchTerm, formularioNuevo: formularioNuevaOrdenCompra })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposOrdenesCompra} datos={datosOrdenesCompra} />
@@ -244,7 +820,7 @@ export const Compras = () => {
                 <TabPanel value='4'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Requisiciones", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Requisiciones", onSearch: setSearchTerm, formularioNuevo: formularioNuevaRequisicion })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposRequisiciones} datos={datosRequisiciones} />
@@ -254,7 +830,7 @@ export const Compras = () => {
                 <TabPanel value='5'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Registro de Productos", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Registro de Productos", onSearch: setSearchTerm, formularioNuevo: formularioNuevoProducto })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposProductos} datos={datosProductos} />
@@ -264,7 +840,7 @@ export const Compras = () => {
                 <TabPanel value='6'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Ajustes de Precios", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Ajustes de Precios", onSearch: setSearchTerm, formularioNuevo: formularioNuevoAjustePrecio })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={campos} datos={datos} />
@@ -274,7 +850,7 @@ export const Compras = () => {
                 <TabPanel value='7'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Proveedores", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Proveedores", onSearch: setSearchTerm, formularioNuevo: formularioNuevoProveedor })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposProveedores} datos={datosProveedores} />
@@ -284,7 +860,7 @@ export const Compras = () => {
                 <TabPanel value='8'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Pagos", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Pagos", onSearch: setSearchTerm, formularioNuevo: formularioNuevoPago })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposPagos} datos={datosPagos} />
@@ -294,7 +870,7 @@ export const Compras = () => {
                 <TabPanel value='9'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Movimientos Proveedores", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Movimientos Proveedores", onSearch: setSearchTerm, formularioNuevo: formularioNuevoMovimientoProveedor })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposMovimientosProveedores} datos={datosMovimientosProveedores} />
@@ -304,7 +880,7 @@ export const Compras = () => {
                 <TabPanel value='10'>
                     <div className="grid grid-cols-2 gap-4 p-4">
                         <div>
-                            {botones({ titulo: "Grupos Proveedores", onSearch: setSearchTerm })}
+                            {botones({ titulo: "Grupos Proveedores", onSearch: setSearchTerm,formularioNuevo: formularioNuevoGrupoProveedor })}
                         </div>
                         <div className='col-span-2 p-5 border rounded shadow-xl'>
                             <Tablas campos={camposGruposProveedores} datos={datosGruposProveedores} />
