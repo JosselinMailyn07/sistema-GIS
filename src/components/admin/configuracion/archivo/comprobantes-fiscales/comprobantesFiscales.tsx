@@ -31,7 +31,7 @@ export const ComprobantesFiscalesForm = () => {
       <div className="mt-4 p-4 border rounded-lg shadow-md">      
         {/* Llamamos a la clase tabla para usar el formato de tablas */}
         { /* Se pasa los campos y los datos filtrados a la tabla */}
-          <Tablas campos={campos} datos={comprobantesFiscales}/>
+          <Tablas campos={campos} datos={comprobantesFiscales} onRowSelect={() => {}}/>
     </div>
     </div>
   );
