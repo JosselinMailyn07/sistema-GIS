@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Modal } from '../../layout/modal';
+import { Modal } from '@/components/admin/tesoreria/bancos/modal';
 
 
 interface Titulo {
     titulo: string;
 }
+
 
 
 export const BotonesPrueba = ({ titulo = "" }: Titulo) => {

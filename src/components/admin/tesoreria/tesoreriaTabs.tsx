@@ -5,6 +5,10 @@ import { Tablas } from '@/components/layout/Tabla';
 import { botones } from '../../layout/botones';
 import { Landmark } from 'lucide-react';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import { Bancos } from './bancos/bancos';
+import { Chequeras } from './chequeras/chequeras';
+import { MovimientosBanco } from './movimientosBanco/movimientosBanco';
+import { CierreCaja } from './cierreCaja/cierreCaja';
 
 
 export const Tesoreria = () => {
@@ -60,35 +64,13 @@ export const Tesoreria = () => {
                     </TabList>
                 </Box>
                 <TabPanel value='1'>
-                    <div className="grid grid-cols-2 gap-4 p-4">
-                        <div>
-                            {botones({ titulo: "Bancos", onSearch: setSearchTerm })}
-
-                        </div>
-                        <div className='col-span-2 p-5 border rounded shadow-xl'>
-                            <Tablas campos={campos} datos={filteredBancos} />
-                        </div>
-                    </div>
+                    <Bancos/>
                 </TabPanel>
                 <TabPanel value='2'>
-                    <div className="grid grid-cols-2 gap-4 p-4">
-                        <div>
-                            {botones({ titulo: "Chequeras", onSearch: setSearchTerm })}
-                        </div>
-                        <div className='col-span-2 p-5 border rounded shadow-xl'>
-                            <Tablas campos={campos} datos={datos} />
-                        </div>
-                    </div>
+                    <Chequeras />
                 </TabPanel>
                 <TabPanel value='3'>
-                    <div className="grid grid-cols-2 gap-4 p-4">
-                        <div>
-                            {botones({ titulo: "Movimientos Bancarios", onSearch: setSearchTerm })}
-                        </div>
-                        <div className='col-span-2 p-5 border rounded shadow-xl'>
-                            <Tablas campos={campos} datos={datos} />
-                        </div>
-                    </div>
+                    <MovimientosBanco />
                 </TabPanel>
                 <TabPanel value='4'>
                     <div className="grid grid-cols-2 gap-4 p-4">
@@ -172,13 +154,8 @@ export const Tesoreria = () => {
                     </div>
                 </TabPanel>
                 <TabPanel value='9'>
-                    <div className="grid grid-cols-2 gap-4 p-4">
-                        <div>
-                            {botones({ titulo: "Cierres de Cajas", onSearch: setSearchTerm })}
-                        </div>
-                        <div className='col-span-2 p-5 border rounded shadow-xl'>
-                            <Tablas campos={campos} datos={datos} />
-                        </div>
+                    <div className="max-w-1/3">
+                    <CierreCaja />
                     </div>
                 </TabPanel>
             </TabContext>
