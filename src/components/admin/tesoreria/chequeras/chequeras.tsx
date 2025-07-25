@@ -5,7 +5,6 @@ import { Tablas } from '@/components/layout/Tabla';
 
 export const Chequeras = () => {
     const campos = [
-        { key: "radio", label: "" },
         { key: "id", label: "ID" },
         { key: "nombre", label: "Nombre" },
         { key: "edad", label: "Edad" },
@@ -29,8 +28,14 @@ export const Chequeras = () => {
                 {botones({ titulo: "Chequeras", onSearch: setSearchTerm })}
             </div>
             <div className="mt-4 p-4 border rounded-lg shadow-md">
-                <Tablas campos={campos} datos={filteredChequeras} />
-            </div>
+                <Tablas
+                    campos={campos}
+                    datos={datos}
+                    onRowSelect={(row) => {
+                        // handle row selection here
+                        console.log('Selected row:', row);
+                    }}
+                />            </div>
         </div>
     );
 }

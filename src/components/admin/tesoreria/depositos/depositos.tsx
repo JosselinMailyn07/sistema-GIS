@@ -29,8 +29,14 @@ export const Bancos = () => {
                 {botones({ titulo: "Bancos", onSearch: setSearchTerm })}
             </div>
             <div className="mt-4 p-4 border rounded-lg shadow-md">
-                <Tablas campos={campos} datos={filteredBancos} />
-            </div>
+                <Tablas
+                    campos={campos}
+                    datos={datos}
+                    onRowSelect={(row) => {
+                        // handle row selection here
+                        console.log('Selected row:', row);
+                    }}
+                />            </div>
         </div>
     );
 }

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { botones } from '@/components/layout/botones';
 import { Tablas } from '@/components/layout/Tabla';
+import BasicModal from './modalMovimientosBanco';
+import { botonestest } from './botonestestmov';
 
 
 export const MovimientosBanco = () => {
@@ -23,14 +25,30 @@ export const MovimientosBanco = () => {
         datos.id.toString().includes(searchTerm)
     );
 
+    // const [openModal, setOpenModal] = useState(false);
+    // const handleOpen = () => setOpenModal(true);
+    // const handleClose = () => setOpenModal(false);
+
+
     return (
+
         <div className="p-4">
             <div className="grid p-2 mb-4 text-left">
-                {botones({ titulo: "Movimientos Bancarios", onSearch: setSearchTerm })}
+
+                {botonestest({ titulo: "Movimientos Bancarios", onSearch: setSearchTerm })}
             </div>
             <div className="mt-4 p-4 border rounded-lg shadow-md">
-                <Tablas campos={campos} datos={filteredMovimientosBanco} />
+                <Tablas
+                    campos={campos}
+                    datos={filteredMovimientosBanco}
+                    onRowSelect={(row) => {
+                        // handle row selection here
+                        console.log('Selected row:', row);
+                    }}
+                />
             </div>
+
+
         </div>
     );
 }
