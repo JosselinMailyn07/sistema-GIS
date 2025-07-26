@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { FaPlus, FaEdit, FaTrash, FaSearch } from 'react-icons/fa';
-import BasicModal  from './modalMovimientosBanco'; // Asegúrate de que la ruta sea correcta
+import ModalNuevo from './modalnuevo'; // Asegúrate de que la ruta sea correcta
+import ModalCaja from './modaltranscaja'; // Asegúrate de que la ruta sea correcta
+import ModalCuenta from './modaltranscuenta'; // Asegúrate de que la ruta
 
 interface BotonesProps {
   titulo: string;
@@ -10,12 +12,11 @@ interface BotonesProps {
 
 export const botonestest = ({ titulo = "", onSearch }: BotonesProps) => {
 
-
-
   const [searchTerm, setSearchTerm] = useState('');
-    const [openModal, setOpenModal] = useState(false);
-    const handleOpen = () => setOpenModal(true);
-    // const handleClose = () => setOpenModal(false);
+  const [modalType, setModalType] = useState<null | 'nuevo' | 'caja' | 'cuentas'>(null);
+
+  const handleOpen = (type: 'nuevo' | 'caja' | 'cuentas') => setModalType(type);
+  const handleClose = () => setModalType(null);
 
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +25,7 @@ export const botonestest = ({ titulo = "", onSearch }: BotonesProps) => {
     onSearch(term); // Llama a la función onSearch con el término de búsqueda
   };
 
-  
+
 
   return (
     <div className="p-2">
@@ -45,16 +46,43 @@ export const botonestest = ({ titulo = "", onSearch }: BotonesProps) => {
         </div>
       </div>
       <div className="flex space-x-2">
-        <Button className="px-4 py-2 bg-success text-white rounded flex items-center" onClick={() => handleOpen()}>
-          <FaPlus className="mr-2" /> Nuevo
+        <Button
+          className="px-4 py-2 bg-primary text-white rounded flex items-center"
+          onClick={() => handleOpen('nuevo')}
+        >
+          Nuevo
         </Button>
-        <Button className="px-4 py-2 bg-destructive text-white rounded flex items-center">
-          <FaTrash className="mr-2" /> Eliminar
+        <Button
+          className="px-4 py-2 bg-primary text-white rounded flex items-center"
+          onClick={() => handleOpen('caja')}
+        >
+          Transferencia a Caja
         </Button>
-        <Button className="px-4 py-2 bg-primary text-white rounded flex items-center" onClick={() => setOpenModal(true)}>
-          <FaEdit className="mr-2" /> Editar
+        <Button
+          className="px-4 py-2 bg-primary text-white rounded flex items-center"
+          onClick={() => handleOpen('cuentas')}
+        >
+          Transferencia entre Cuentas
         </Button>
-        <BasicModal abrir={openModal} onClose={() => setOpenModal(false)} />
+        <Button
+          className="px-4 py-2 bg-primary text-white rounded flex items-center"
+          onClick={() => handleOpen('nuevo')}
+        >
+          <FaEdit className="mr-2" />
+          Editar
+        </Button>
+        <Button
+          className="px-4 py-2 bg-destructive text-white rounded flex items-center"
+          
+        >
+          <FaTrash className="mr-2" />
+          Eliminar
+        </Button>
+
+
+        {modalType === 'nuevo' && <ModalNuevo abrir={true} onClose={handleClose} />}
+        {modalType === 'caja' && <ModalCaja abrir={true} onClose={handleClose} />}
+        {modalType === 'cuentas' && <ModalCuenta abrir={true} onClose={handleClose} />}
       </div>
     </div>
   );

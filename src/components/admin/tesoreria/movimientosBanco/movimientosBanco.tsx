@@ -1,33 +1,34 @@
 import { useState } from 'react';
 import { botones } from '@/components/layout/botones';
 import { Tablas } from '@/components/layout/Tabla';
-import BasicModal from './modalMovimientosBanco';
+import BasicModal from './modalnuevo';
 import { botonestest } from './botonestestmov';
 
 
 export const MovimientosBanco = () => {
     const campos = [
-        { key: "radio", label: "" },
-        { key: "id", label: "ID" },
-        { key: "nombre", label: "Nombre" },
-        { key: "edad", label: "Edad" },
-        { key: "correo", label: "Correo" }
+        { key: "codigo", label: "Código Banco" },
+        { key: "fecha", label: "Fecha" },
+        { key: "tipo", label: "Tipo" }, 
+        { key: "numdocumento", label: "No. Documento" },
+        { key: "concepto", label: "Concepto" },
+        { key: "valor", label: "Valor" },
+        { key: "beneficiario", label: "Beneficiario" },
+        { key: "origen", label: "Origen" }
     ];
 
     const datos = [
-        { id: 1, nombre: "Juan", edad: 28, correo: "hola@example.com" },
-        { id: 2, nombre: "Byron", edad: 28, correo: "hola@example.com" },
-        { id: 3, nombre: "Ana", edad: 28, correo: "hola@ejemplo.com" }
+        { id: 1, codigo: "001", fecha: "2023-10-01", tipo: "Ingreso", numdocumento: "12345", concepto: "Pago Servicio", valor: 1000, beneficiario: "Empresa A", origen: "Cuenta A" },
+        { id: 2, codigo: "002", fecha: "2023-10-02", tipo: "Egreso", numdocumento: "12346", concepto: "Compra Materiales", valor: 500, beneficiario: "Proveedor B", origen: "Cuenta B" },
+        // Agrega más datos según sea necesario
     ];
     const [searchTerm, setSearchTerm] = useState('');
     const filteredMovimientosBanco = datos.filter(datos =>
-        datos.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        datos.id.toString().includes(searchTerm)
+        datos.origen.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        datos.codigo.toString().includes(searchTerm)
     );
 
-    // const [openModal, setOpenModal] = useState(false);
-    // const handleOpen = () => setOpenModal(true);
-    // const handleClose = () => setOpenModal(false);
+
 
 
     return (

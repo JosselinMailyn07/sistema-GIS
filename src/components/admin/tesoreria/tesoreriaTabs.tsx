@@ -46,14 +46,7 @@ export const Tesoreria = () => {
 
     // Implementación de búsqueda
     const [searchTerm, setSearchTerm] = useState('');
-    const filteredBancos = datos.filter(datos =>
-        datos.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        datos.id.toString().includes(searchTerm)
-    );
-    const filteredMovimientosBanco = datos.filter(datos =>
-        datos.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        datos.id.toString().includes(searchTerm)
-    );
+
 
 
     return (
