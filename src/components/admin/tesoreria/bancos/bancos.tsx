@@ -1,30 +1,55 @@
 import { useState } from 'react';
 import { botones } from '@/components/admin/tesoreria/bancos/botones';
 import { Tablas } from '@/components/layout/Tabla';
+import { useEffect } from 'react';
 
 
 export const Bancos = () => {
     const campos = [
-        { key: "codigo", label: "Código" },
+        { key: "codigobanco", label: "Código" },
         { key: "nombre", label: "Nombre" },
         { key: "cuenta", label: "Cuenta" },
-        { key: "direccion", label: "Direccion" },
-        { key: "tel", label: "Número de Teléfono" },
-        { key: "correo", label: "Correo Electrónico" },
+        { key: "codigocontable", label: "Código Contable" },
+        { key: "direccion", label: "Dirección" },
+        { key: "telefonos", label: "Teléfonos" },
+        { key: "fax", label: "Fax" },
+        { key: "email", label: "Email" },
         { key: "contacto", label: "Contacto" },
         { key: "agencia", label: "Agencia" },
-        { key: "comision", label: "Comisión" }
+        { key: "comision", label: "Comisión (%)" },
+        { key: "saldo", label: "Saldo ($)" },
     ];
 
-    const datos = [
-        { codigo: 1, nombre: "Banco A", cuenta: "123456789", direccion: "Calle 1", tel: "1234567890", correo: "", contacto: "Juan Perez", agencia: "Agencia 1", comision: "0.5%" },
-        { codigo: 2, nombre: "Banco B", cuenta: "987654321", direccion: "Calle 2", tel: "0987654321", correo: "", contacto: "Maria Lopez", agencia: "Agencia 2", comision: "0.7%" },
-        { codigo: 3, nombre: "Banco C", cuenta: "456789123", direccion: "Calle 3", tel: "4567891230", correo: "", contacto: "Carlos Gomez", agencia: "Agencia 3", comision: "0.6%" }
-    ];
+    const [datos, setDatos] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    "http://localhost:3001/api/tesoreria/bancos"
+                ); // cambia el endpoint
+                const data = await response.json();
+
+                // Opcional: limpieza de datos
+                const cleaned = data.map((banco) => ({
+                    ...banco,
+                    nombre: banco.nombre?.trim() ?? "",
+                }));
+
+                setDatos(cleaned);
+            } catch (error) {
+                console.error("Error al obtener los bancos:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
     const [searchTerm, setSearchTerm] = useState('');
-    const filteredBancos = datos.filter(datos =>
-        datos.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        datos.codigo.toString().includes(searchTerm)
+    const filteredBancos = datos.filter(
+        (banco) =>
+            banco.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            banco.codigobanco.includes(searchTerm) ||
+            banco.cuenta.includes(searchTerm)
     );
 
     return (
@@ -34,12 +59,12 @@ export const Bancos = () => {
             </div>
             <div className="mt-4 p-4 border rounded-lg shadow-md">
                 <Tablas
-                  campos={campos}
-                  datos={filteredBancos}
-                  onRowSelect={(row) => {
-                    // handle row selection here
-                    console.log('Selected row:', row);
-                  }}
+                    campos={campos}
+                    datos={filteredBancos}
+                    onRowSelect={(row) => {
+                        // handle row selection here
+                        console.log('Selected row:', row);
+                    }}
                 />
             </div>
         </div>
