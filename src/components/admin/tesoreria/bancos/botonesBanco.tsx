@@ -1,22 +1,30 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { FaPlus, FaEdit, FaTrash, FaSearch } from 'react-icons/fa';
-import { Modal } from './modal'; // Asegúrate de que la ruta sea correcta
+import ModalNuevo from './modalBanco'; // Asegúrate de que la ruta sea correcta
+
 
 interface BotonesProps {
   titulo: string;
   onSearch: (searchTerm: string) => void; // Función para manejar la búsqueda
 }
 
-export const botones = ({ titulo = "", onSearch }: BotonesProps) => {
+export const botonesBanco = ({ titulo = "", onSearch }: BotonesProps) => {
+
   const [searchTerm, setSearchTerm] = useState('');
-  const [mostrarModal, setMostrarModal] = useState(false);
+  const [modalType, setModalType] = useState<null | 'nuevo'  >(null);
+
+  const handleOpen = (type: 'nuevo' ) => setModalType(type);
+  const handleClose = () => setModalType(null);
+
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value;
     setSearchTerm(term);
     onSearch(term); // Llama a la función onSearch con el término de búsqueda
   };
+
+
 
   return (
     <div className="p-2">
@@ -37,20 +45,31 @@ export const botones = ({ titulo = "", onSearch }: BotonesProps) => {
         </div>
       </div>
       <div className="flex space-x-2">
-        <Button className="px-4 py-2 bg-success text-white rounded flex items-center" onClick={() => setMostrarModal(true)}>
-          <FaPlus className="mr-2" /> Nuevo
+        <Button
+          className="px-4 py-2 bg-primary text-white rounded flex items-center"
+          onClick={() => handleOpen('nuevo')}
+        >
+          <FaPlus className="mr-1" />
+          Nuevo
         </Button>
-        <Button className="px-4 py-2 bg-destructive text-white rounded flex items-center">
-          <FaTrash className="mr-2" /> Eliminar
-        </Button>
-        <Button className="px-4 py-2 bg-primary text-white rounded flex items-center" onClick={() => setMostrarModal(true)}>
-          <FaEdit className="mr-2" /> Editar
-        </Button>
-        {mostrarModal && (
-          <Modal onClose={() => setMostrarModal(false)}
 
-          />
-        )}
+        <Button
+          className="px-4 py-2 bg-primary text-white rounded flex items-center"
+          onClick={() => handleOpen('nuevo')}
+        >
+          <FaEdit className="mr-2" />
+          Editar
+        </Button>
+        <Button
+          className="px-4 py-2 bg-primary text-white rounded flex items-center"
+          
+        >
+          <FaTrash className="mr-2" />
+          Eliminar
+        </Button>
+
+
+        {modalType === 'nuevo' && <ModalNuevo abrir={true} onClose={handleClose} />}
       </div>
     </div>
   );

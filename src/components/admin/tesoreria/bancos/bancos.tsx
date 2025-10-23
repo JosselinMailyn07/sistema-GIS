@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { botones } from '@/components/admin/tesoreria/bancos/botones';
+
 import { Tablas } from '@/components/layout/Tabla';
 import { useEffect } from 'react';
+import { botonesBanco } from './botonesBanco';
 
 
 export const Bancos = () => {
@@ -55,14 +56,13 @@ export const Bancos = () => {
     return (
         <div className="p-4">
             <div className="grid p-2 mb-4 text-left">
-                {botones({ titulo: "Bancos", onSearch: setSearchTerm })}
+                {botonesBanco({ titulo: "Bancos", onSearch: setSearchTerm })}
             </div>
             <div className="mt-4 p-4 border rounded-lg shadow-md">
                 <Tablas
                     campos={campos}
                     datos={filteredBancos}
                     onRowSelect={(row) => {
-                        // handle row selection here
                         console.log('Selected row:', row);
                     }}
                 />

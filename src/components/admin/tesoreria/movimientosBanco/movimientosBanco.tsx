@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import { botones } from '@/components/layout/botones';
 import { Tablas } from '@/components/layout/Tabla';
-import BasicModal from './modalnuevo';
-import { botonestest } from './botonestestmov';
+import { botonestest } from './botonesmovBanco';
 
 
 export const MovimientosBanco = () => {
@@ -35,7 +33,6 @@ export const MovimientosBanco = () => {
 
         <div className="p-4">
             <div className="grid p-2 mb-4 text-left">
-
                 {botonestest({ titulo: "Movimientos Bancarios", onSearch: setSearchTerm })}
             </div>
             <div className="mt-4 p-4 border rounded-lg shadow-md">
@@ -48,8 +45,6 @@ export const MovimientosBanco = () => {
                     }}
                 />
             </div>
-
-
         </div>
     );
 }

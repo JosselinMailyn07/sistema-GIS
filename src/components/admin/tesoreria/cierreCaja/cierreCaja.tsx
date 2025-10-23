@@ -1,7 +1,4 @@
-import { Box,  MenuItem,  SelectChangeEvent, TextField, Paper, Button } from '@mui/material';
-import { Link } from "react-router-dom";
-import { useState } from 'react';
-
+import { Box, MenuItem, SelectChangeEvent, TextField, Paper, Button } from '@mui/material';
 
 
 export const CierreCaja = () => {
@@ -24,8 +21,8 @@ export const CierreCaja = () => {
     return (
         <>
             <Box display="flex" justifyContent="center">
-                <Paper elevation={3} sx={{ padding: 2, margin: 2, maxWidth: 500 }}>
-                    <Box component="form" sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <Paper sx={{ padding: 2, margin: 2 }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                         <TextField
                             id="outlined-select-currency"
                             select
@@ -72,18 +69,12 @@ export const CierreCaja = () => {
                             inputMode='numeric'
                             inputProps={{ step: 0.01 }}
                             placeholder="0.00"
-                            fullWidth
                         />
 
 
-                        <Box sx={{ display: 'flex', justifyContent: 'space-evenly', marginTop: 2 }}>
-                            <Button variant="contained" color="primary" type="submit" sx={{ marginRight: 2 }}>
-                                Cerrar Caja
-                            </Button>
-                            <Button variant="contained" color="primary" type="button">
-                                Cancelar
-                            </Button>
-                        </Box>
+                        <div className='px-4 py-2 flex justify-center rounded text-white bg-primary' >
+                            <button type='submit'>Cerrar Caja</button>
+                        </div>
                     </Box>
                 </Paper>
             </Box>

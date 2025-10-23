@@ -73,14 +73,9 @@ export const AbreCaja = () => {
                     />
 
 
-                    <Box sx={{ display: 'flex', justifyContent: 'space-evenly', marginTop: 2 }}>
-                        <Button variant="contained" color="primary" type="submit" sx={{ marginRight: 2 }}>
-                            Abrir Caja
-                        </Button>
-                        <Button variant="contained" color="primary" type="button">
-                            Cancelar
-                        </Button>
-                    </Box>
+                        <div className='px-4 py-2 flex justify-center rounded text-white bg-primary' >
+                            <button type='submit'>Abrir Caja</button>
+                        </div>
                 </Box>
             </Paper>
         </Box>
